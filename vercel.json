@@ -3,7 +3,7 @@
     {
       "source": "/",
       "has": [{ "type": "host", "value": "focusflow-personal.luukcoolen.nl" }],
-      "destination": "https://focusflow-personal-759367249229.europe-west2.run.app/",
+      "destination": "https://focusflow-personal.ai.studio/",
       "permanent": false
     },
     {
@@ -21,7 +21,7 @@
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "focusflow-personal.luukcoolen.nl" }],
-      "destination": "https://focusflow-personal-759367249229.europe-west2.run.app/:path*",
+      "destination": "https://focusflow-personal.ai.studio/:path*",
       "permanent": false
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "source": "/focusflow-personal",
-      "destination": "https://focusflow-personal-759367249229.europe-west2.run.app/",
+      "destination": "https://focusflow-personal.ai.studio/",
       "permanent": false
     },
     {
