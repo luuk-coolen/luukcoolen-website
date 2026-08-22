@@ -46,6 +46,9 @@ export function Lessons() {
           <p>
             Door te bouwen en testen leerde ik dat een goede digitale oplossing niet bij technologie begint, maar bij de mensen die ermee werken. Daardoor werk ik nu minder vanuit losse functies en meer vanuit analyse, kleine stappen en tussentijds toetsen.
           </p>
+          <p className="mt-5">
+            Ik kijk daarbij ook naar wat er ná het prototype nodig is: hoe gebruikers begrijpen wat een systeem doet, waar AI wel en niet wordt gebruikt, welke informatie zorgvuldig verwerkt moet worden en hoe een oplossing verantwoord in de praktijk kan landen.
+          </p>
         </div>
       </motion.div>
 

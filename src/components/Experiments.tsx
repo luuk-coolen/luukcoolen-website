@@ -34,11 +34,12 @@ const prototypes: Prototype[] = [
     status: 'Leerprototype',
     icon: <LayoutTemplate size={24} />,
     description:
-      'FocusFlow onderzoekt hoe complexe dossierinformatie kan worden teruggebracht tot heldere keuzes voor de werkdag. De nadruk ligt op ordening, besluitvoorbereiding en een haalbare Top 3.',
+      'FocusFlow onderzoekt hoe complexe dossierinformatie kan worden teruggebracht tot heldere keuzes voor de werkdag. De nadruk ligt op ordening, besluitvoorbereiding en een haalbare Top 3; de gebruiker houdt de regie over de afwegingen.',
     bullets: [
       'Versnipperde dossiergegevens en terugkerende stappen in kaart brengen',
       'Urgentie, context en vervolgstap zichtbaar afwegen',
       'Dag- en weekplanning met elkaar verbinden',
+      'Planningskeuzes als workflow tonen, niet als AI-advies',
     ],
     approach: [
       'Ik begon bij de dagelijkse werksituatie: waar ontstaat druk en welke keuzes moeten worden voorbereid?',
@@ -62,11 +63,12 @@ const prototypes: Prototype[] = [
     status: 'Leerprototype',
     icon: <Home size={24} />,
     description:
-      'Woonbuddy onderzoekt hoe bewoners en begeleiders sneller overzicht krijgen in taken, afspraken en ontwikkeling. Het prototype test eenvoudige taal, herkenbare onderdelen en begrijpelijke navigatie.',
+      'Woonbuddy onderzoekt hoe bewoners en begeleiders sneller overzicht krijgen in taken, afspraken en ontwikkeling. Taken en begeleide stappen zijn vaste workflows; de afzonderlijke chat kan AI gebruiken voor extra uitleg.',
     bullets: [
       'Dagelijkse afspraken en taken herkenbaar presenteren',
       'Eenvoudige taal en voorspelbare navigatie gebruiken',
       'Ontwikkeling tonen zonder extra administratieve druk',
+      'AI-hulp duidelijk onderscheiden van gewone taakbegeleiding',
     ],
     approach: [
       'Ik begon bij momenten waarop bewoners of begeleiders snel willen weten wat er verwacht wordt en wat er gepland staat.',
@@ -90,11 +92,12 @@ const prototypes: Prototype[] = [
     status: 'Leerprototype',
     icon: <Brain size={24} />,
     description:
-      'MindFlow onderzoekt hoe AI patronen en hypotheses kan helpen ordenen zonder de regie van de gebruiker over te nemen. De nadruk ligt op een rustige en begrijpelijke reflectiestroom.',
+      'MindFlow onderzoekt hoe AI patronen en hypotheses kan helpen ordenen zonder de regie van de gebruiker over te nemen. AI-uitkomsten blijven voorlopige werkhypotheses die de gebruiker kan toetsen, aanvullen of verwerpen.',
     bullets: [
       'Beginnen vanuit één concrete startvraag',
       'Observaties en hypotheses herkenbaar van elkaar scheiden',
       'De gebruiker controle houden over inzichten en vervolgstappen',
+      'AI-gegenereerde reflecties als controleerbare suggesties behandelen',
     ],
     approach: [
       'Ik onderzocht hoe een AI-gesprek richting krijgt wanneer sessies, profielen, hypotheses en bronnen met elkaar samenhangen.',
@@ -118,11 +121,12 @@ const prototypes: Prototype[] = [
     status: 'Leerprototype',
     icon: <Compass size={24} />,
     description:
-      'FocusFlow Personal ontstond uit de vraag hoe een drukke werkweek meer richting kan krijgen. Het leerprototype helpt niet om méér te doen, maar om bewuster te kiezen wat vandaag aandacht verdient.',
+      'FocusFlow Personal ontstond uit de vraag hoe een drukke werkweek meer richting kan krijgen. Het leerprototype helpt niet om méér te doen, maar om bewuster te kiezen wat vandaag aandacht verdient via een vaste, zelfgestuurde workflow.',
     bullets: [
       'Dagstart en weekreview verbinden in één ritme',
       'Een Top 3 gebruiken om keuzes zichtbaar te maken',
       'Taken parkeren om ruimte en grenzen te bewaken',
+      'Het ritme ondersteunen zonder keuzes als AI-advies te presenteren',
     ],
     approach: [
       'Ik begon vanuit mijn eigen behoefte aan overzicht tijdens een periode met sollicitaties, projecten en persoonlijke ontwikkeling. Gewone takenlijsten verzamelden vooral meer werk en gaven weinig richting.',
@@ -297,7 +301,7 @@ export function Experiments() {
               Deze leerprototypes laten zien hoe ik praktijksituaties onderzoek, keuzes zichtbaar maak en digitale ideeën toets.
             </p>
             <p className="font-medium text-slate-900">
-              De rode draad: zorginnovatie, gebruiksvriendelijkheid en beter georganiseerde zorg.
+              De rode draad: zorginnovatie, gebruiksvriendelijkheid en beter georganiseerde zorg — met aandacht voor wanneer AI wel en niet wordt gebruikt.
             </p>
           </div>
         </motion.div>
