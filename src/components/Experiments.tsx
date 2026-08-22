@@ -133,13 +133,12 @@ const prototypes: Prototype[] = [
       'Daarom ontwierp ik een ritme van weekreview, dagstart, werkmodus en afsluiting. Met een Top 3, energie-inzicht en parkeerplaats testte ik wat helpt om bewuster te kiezen.',
     ],
     image: {
-      src: '/projects/focusflow-personal-overview.jpg',
-      alt: 'FocusFlow Personal overzicht met dagstart, werkmodus, reflectie en weekreview',
+      src: '/projects/focusflow-personal-workmodus-current-demo.png',
+      alt: 'FocusFlow Personal Werkmodus met fictieve weekfocus, taken en agenda',
     },
     examples: [
-      { src: '/projects/focusflow-personal-dagstart.png', alt: 'FocusFlow Personal dagstart en morning scan' },
-      { src: '/projects/focusflow-personal-werkmodus.png', alt: 'FocusFlow Personal werkmodus met Top 3 en parkeerplaats' },
-      { src: '/projects/focusflow-personal-product-overview.jpg', alt: 'FocusFlow Personal productoverzicht met volledige workflow' },
+      { src: '/projects/focusflow-personal-top3-current-demo.png', alt: 'FocusFlow Personal Dagstart met een fictieve Top 3' },
+      { src: '/projects/focusflow-personal-weekreview-current-demo.png', alt: 'FocusFlow Personal Weekreview met de keuze voor een terugblik' },
     ],
     href: focusFlowPersonalHref,
     cta: focusFlowPersonalHref ? 'Lees het projectverhaal' : 'In ontwikkeling',

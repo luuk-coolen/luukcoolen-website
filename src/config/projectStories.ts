@@ -35,8 +35,11 @@ export const projectStories: ProjectStory[] = [
     workflow: ['Dagstart met context uit agenda en taken', 'Kiezen en begrenzen met een Top 3', 'Werkmodus voor focus en parkeren', 'Weekplanning, reflectie en een bewuste afsluiting'],
     ai: 'De kern is een zelfgestuurde workflow. Een eventuele AI-koppeling voor planning wordt niet als vervanging van eigen keuzes gepresenteerd.',
     implementation: 'De actuele app bevat ook historie, account/sync en data/backup. De portfolio toont het als leerprototype, niet als afgeronde productoplossing.',
-    images: [],
-    screenshotNote: 'De actuele publieke sessie bevat persoonlijke planning. Nieuwe portfoliobeelden volgen pas uit een gecontroleerde fictieve demosessie.',
+    images: [
+      { src: '/projects/focusflow-personal-workmodus-current-demo.png', alt: 'FocusFlow Personal Werkmodus met fictieve weekfocus, taken en agenda' },
+      { src: '/projects/focusflow-personal-top3-current-demo.png', alt: 'FocusFlow Personal Dagstart met een fictieve Top 3' },
+      { src: '/projects/focusflow-personal-weekreview-current-demo.png', alt: 'FocusFlow Personal Weekreview met de keuze voor een terugblik' },
+    ],
   },
   {
     slug: 'woonbuddy',

@@ -50,6 +50,10 @@ Known completed work from git history and code inspection:
 - Added FocusFlow Personal case study and screenshots.
 - Tightened portfolio copy and navigation.
 - Added mobile section navigation.
+- Added a shared project-story route for FocusFlow Bewind, WoonBuddy, MindFlow and FocusFlow Personal. The portfolio cards open those stories first, while the Projecten menu keeps linking directly to the apps.
+- Centralized the app targets in `src/config/projectLinks.ts`; `src/config/projectStories.ts` resolves its app CTA from that source.
+- Refreshed the WoonBuddy and MindFlow portfolio screenshots from fictional demos and documented the AI boundaries in `docs/AI_TRANSPARENCY_REVIEW.md`.
+- Replaced the older FocusFlow Personal portfolio visuals with controlled fictitious-demo images for Werkmodus, Dagstart/Top 3 and Weekreview; the original files remain available as reference. A five-screen mobile workflow strip should only be added from real mobile captures with fictitious content.
 
 No active roadmap was found before this file. `docs/old-version.md` remains a historical content/reference file, not an active roadmap.
 

@@ -14,6 +14,10 @@ LuukCoolen.nl is een persoonlijke portfolio- en leerportfoliowebsite rond projec
 
 - Recente Git-geschiedenis vermeldt mobiele sectienavigatie, aangescherpte portfolio-copy en navigatie, een FocusFlow Personal-casestudy en verwijdering van een GitHub-projectlink.
 - De actieve roadmap beschrijft eerdere positionering richting zorginnovatie, projectgroepering en directe projectlinks.
+- Portfolioverhaal, projectlinks en appingangen zijn opnieuw gecontroleerd voor FocusFlow Personal, WoonBuddy en MindFlow.
+- Projectkaarten leiden nu naar een gedeelde, compacte projectlandingspagina (`/projecten/:slug`); het menu **Projecten** blijft voor directe appnavigatie.
+- `src/config/projectStories.ts` hergebruikt de canonieke URL's uit `src/config/projectLinks.ts`, zodat app-URL's niet per landingspagina worden gedupliceerd.
+- WoonBuddy, MindFlow en FocusFlow Personal gebruiken recente privacyveilige demoscreenshots. De FocusFlow Personal-set bevat Werkmodus, Dagstart/Top 3 en Weekreview; een losse mobiele workflowstrip volgt alleen uit echte mobiele captures.
 
 ## Actuele beslissingen
 
@@ -23,7 +27,7 @@ LuukCoolen.nl is een persoonlijke portfolio- en leerportfoliowebsite rond projec
 
 ## Open punten
 
-- Actieve sprint: onbekend; de roadmap vraagt om gebruikersbevestiging.
+- Voeg voor FocusFlow Personal vijf echte mobiele captures met fictieve content samen tot de geplande workflowstrip. Actuele persoonlijke planning is niet geschikt voor publicatie.
 - Bevestig actuele canonieke URL's en de zichtbaarheid/status van gekoppelde projecten.
 - Deployment en hostingconfiguratie alleen gericht onderzoeken wanneer daarvoor een opdracht is.
 
@@ -37,6 +41,8 @@ LuukCoolen.nl is een persoonlijke portfolio- en leerportfoliowebsite rond projec
 - Richting en open punten: `docs/PROJECT_ROADMAP.md`.
 - Historische websiteversie: `docs/old-version.md`.
 - Projectlinks: `src/config/projectLinks.ts`.
+- Projectverhalen: `src/config/projectStories.ts` en `src/components/ProjectLanding.tsx`.
+- AI-transparantie: `docs/AI_TRANSPARENCY_REVIEW.md`.
 - Duurzame werkregels: `AGENTS.md`.
 
 Deze status vat vastgestelde repositoryinformatie samen en maakt geen nieuwe roadmapbeslissingen.
