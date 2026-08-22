@@ -9,6 +9,8 @@ import { About } from './components/About';
 import { Contact } from './components/Contact';
 import { Privacy } from './components/Privacy';
 import { projectLinks } from './config/projectLinks';
+import { getProjectStory } from './config/projectStories';
+import { ProjectLanding } from './components/ProjectLanding';
 
 export default function App() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
@@ -16,6 +18,8 @@ export default function App() {
   const [isDevelopmentOpen, setIsDevelopmentOpen] = useState(false);
   const projectsMenuRef = useRef<HTMLDivElement>(null);
   const moreProjectLinks = projectLinks.filter((project) => project.section === 'more');
+  const storyMatch = window.location.pathname.match(/^\/projecten\/([^/]+)\/?$/);
+  const story = storyMatch ? getProjectStory(storyMatch[1]) : undefined;
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -28,6 +32,8 @@ export default function App() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  if (story) return <ProjectLanding story={story} />;
 
   return (
     <div className="min-h-screen bg-mesh font-sans text-slate-900">

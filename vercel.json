@@ -61,5 +61,11 @@
       "destination": "https://eerste-stap-804362620068.europe-west2.run.app",
       "permanent": false
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/projecten/:path*",
+      "destination": "/"
+    }
   ]
 }

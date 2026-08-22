@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { Section } from './ui/Section';
 import { ArrowRight, Brain, CheckCircle2, Compass, Home, LayoutTemplate, Maximize2, X } from 'lucide-react';
 import { motion } from 'motion/react';
-import { projectLinks } from '../config/projectLinks';
+import { getProjectStory } from '../config/projectStories';
 
 type Prototype = {
   title: string;
@@ -25,7 +25,7 @@ type Prototype = {
   cta: string;
 };
 
-const focusFlowPersonalHref = projectLinks.find((project) => project.label === 'FocusFlow Personal')?.href;
+const focusFlowPersonalHref = getProjectStory('focusflow-personal')?.href;
 
 const prototypes: Prototype[] = [
   {
@@ -54,8 +54,8 @@ const prototypes: Prototype[] = [
       { src: '/projects/focusflow-stap-4.jpg', alt: 'FocusFlow actieplan en top drie' },
       { src: '/projects/focusflow-weekplanning.jpg', alt: 'FocusFlow weekplanning' },
     ],
-    href: 'https://focusflow.luukcoolen.nl/',
-    cta: 'Bekijk FocusFlow live hier',
+    href: getProjectStory('focusflow-bewind')?.href,
+    cta: 'Lees het projectverhaal',
   },
   {
     title: 'Woonbuddy',
@@ -75,16 +75,16 @@ const prototypes: Prototype[] = [
       'Die vragen vertaalde ik naar herkenbare onderdelen en ik testte hoeveel uitleg per scherm werkelijk nodig is.',
     ],
     image: {
-      src: '/projects/woonbuddy-overview.jpg',
-      alt: 'Woonbuddy overzicht met startpagina, taken en ontwikkeling',
+      src: '/projects/woonbuddy-overview.png',
+      alt: 'WoonBuddy bewonersdashboard met overzicht, taken en begeleiding',
     },
     examples: [
-      { src: '/projects/woonbuddy-startpagina.jpg', alt: 'Woonbuddy startpagina' },
-      { src: '/projects/woonbuddy-taken.jpg', alt: 'Woonbuddy takenoverzicht' },
-      { src: '/projects/woonbuddy-ontwikkeling.jpg', alt: 'Woonbuddy ontwikkeling' },
+      { src: '/projects/woonbuddy-startpagina.png', alt: 'WoonBuddy startpagina in de fictieve bewonersdemo' },
+      { src: '/projects/woonbuddy-taken.png', alt: 'WoonBuddy begeleide taak met vaste stappen' },
+      { src: '/projects/woonbuddy-ontwikkeling.png', alt: 'WoonBuddy doelen en ontwikkeling in de fictieve demo' },
     ],
-    href: 'https://woonbuddy.luukcoolen.nl/',
-    cta: 'Bekijk Woonbuddy live hier',
+    href: getProjectStory('woonbuddy')?.href,
+    cta: 'Lees het projectverhaal',
   },
   {
     title: 'MindFlow',
@@ -104,16 +104,16 @@ const prototypes: Prototype[] = [
       'Daarna bouwde ik de dialoog op rond terugkijken, samenvatten en het voorbereiden van een volgende stap.',
     ],
     image: {
-      src: '/projects/mindflow-overview.jpg',
-      alt: 'MindFlow overzicht met dashboard, coachsessie en principes',
+      src: '/projects/mindflow-overview.png',
+      alt: 'MindFlow actieve coachsessie met een concrete volgende stap',
     },
     examples: [
-      { src: '/projects/mindflow-dashboard.jpg', alt: 'MindFlow dashboard' },
-      { src: '/projects/mindflow-active-session.jpg', alt: 'MindFlow actieve sessie' },
-      { src: '/projects/mindflow-kaders.jpg', alt: 'MindFlow kaders voor coaching' },
+      { src: '/projects/mindflow-dashboard.png', alt: 'MindFlow dashboard met fictief demo-profiel' },
+      { src: '/projects/mindflow-active-session.png', alt: 'MindFlow actieve coachsessie' },
+      { src: '/projects/mindflow-kaders.png', alt: 'MindFlow profiel met werkhypotheses' },
     ],
-    href: 'https://mindflow.luukcoolen.nl/',
-    cta: 'Bekijk MindFlow live hier',
+    href: getProjectStory('mindflow')?.href,
+    cta: 'Lees het projectverhaal',
   },
   {
     title: 'FocusFlow Personal',
@@ -142,7 +142,7 @@ const prototypes: Prototype[] = [
       { src: '/projects/focusflow-personal-product-overview.jpg', alt: 'FocusFlow Personal productoverzicht met volledige workflow' },
     ],
     href: focusFlowPersonalHref,
-    cta: focusFlowPersonalHref ? 'Bekijk FocusFlow Personal live hier' : 'In ontwikkeling',
+    cta: focusFlowPersonalHref ? 'Lees het projectverhaal' : 'In ontwikkeling',
   },
 ];
 

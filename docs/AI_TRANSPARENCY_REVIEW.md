@@ -44,6 +44,6 @@ Datum: 22 augustus 2026. Dit is een product- en transparantiereview, geen juridi
 
 ## Portfolio en screenshots
 
-De websitecopy onderscheidt nu AI en gewone workflows per project en maakt verantwoord implementeren zichtbaar in de leersectie. Alle huidige projectbeelden zijn geïnventariseerd: WoonBuddy, FocusFlow Bewind en MindFlow dateren van mei 2026; FocusFlow Personal van juni 2026. Zij zijn niet als actueel gevalideerd.
+De websitecopy onderscheidt nu AI en gewone workflows per project en maakt verantwoord implementeren zichtbaar in de leersectie. WoonBuddy en MindFlow zijn op 22 augustus 2026 vervangen door actuele screenshots uit hun expliciet fictieve demo's: WoonBuddy toont start, begeleide taak en ontwikkeling; MindFlow toont dashboard, actieve sessie en demo-profiel.
 
-Vervang vóór publicatie met nieuwe screenshots uit een gecontroleerde fictieve demo, bij voorkeur: WoonBuddy start/begeleide taak; FocusFlow Bewind werkdag/Top 3; FocusFlow Personal dagstart/werkmodus/weekreview; MindFlow dashboard, actieve coachsessie en profiel- of contextscherm. Gebruik geen echte cliënt- of reflectiedata.
+FocusFlow Bewind is inhoudelijk niet opnieuw onderzocht en behoudt zijn bestaande beelden. FocusFlow Personal is inhoudelijk vergeleken met de actuele publieke app, maar de beschikbare sessie bevat persoonlijke planning. Vervang die beelden pas uit een gecontroleerde fictieve demosessie met dagstart, Top 3, werkmodus en weekreview.
