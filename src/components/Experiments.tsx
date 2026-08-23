@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 import { Section } from './ui/Section';
-import { ArrowRight, Brain, CheckCircle2, Compass, Home, LayoutTemplate, Maximize2, X } from 'lucide-react';
+import { ArrowRight, Brain, CheckCircle2, Compass, Home, LayoutTemplate, Maximize2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { getProjectStory } from '../config/projectStories';
+import { PortfolioLightbox, type GalleryImage } from './PortfolioLightbox';
 
 type Prototype = {
   title: string;
@@ -75,13 +76,13 @@ const prototypes: Prototype[] = [
       'Die vragen vertaalde ik naar herkenbare onderdelen en ik testte hoeveel uitleg per scherm werkelijk nodig is.',
     ],
     image: {
-      src: '/projects/woonbuddy-overview.png',
-      alt: 'WoonBuddy bewonersdashboard met overzicht, taken en begeleiding',
+      src: '/projects/woonbuddy-portfolio-overview-v2.png',
+      alt: 'WoonBuddy portfolio-overzicht met woonstart, begeleiding en ontwikkeling',
     },
     examples: [
-      { src: '/projects/woonbuddy-startpagina.png', alt: 'WoonBuddy startpagina in de fictieve bewonersdemo' },
-      { src: '/projects/woonbuddy-taken.png', alt: 'WoonBuddy begeleide taak met vaste stappen' },
-      { src: '/projects/woonbuddy-ontwikkeling.png', alt: 'WoonBuddy doelen en ontwikkeling in de fictieve demo' },
+      { src: '/projects/woonbuddy-v2-source-woonstart.png', alt: 'WoonBuddy Woonstart in de fictieve bewonersdemo' },
+      { src: '/projects/woonbuddy-v2-source-activiteiten.png', alt: 'WoonBuddy activiteiten met fictieve gezamenlijke en buitenactiviteiten' },
+      { src: '/projects/woonbuddy-v2-source-contact-hulp.png', alt: 'WoonBuddy Contact & Hulp met fictieve begeleidingsopties' },
     ],
     href: getProjectStory('woonbuddy')?.href,
     cta: 'Lees het projectverhaal',
@@ -104,13 +105,13 @@ const prototypes: Prototype[] = [
       'Daarna bouwde ik de dialoog op rond terugkijken, samenvatten en het voorbereiden van een volgende stap.',
     ],
     image: {
-      src: '/projects/mindflow-overview.png',
-      alt: 'MindFlow actieve coachsessie met een concrete volgende stap',
+      src: '/projects/mindflow-portfolio-overview.png',
+      alt: 'MindFlow portfolio-overzicht met dashboard, coachsessie en reflectieworkflow',
     },
     examples: [
       { src: '/projects/mindflow-dashboard.png', alt: 'MindFlow dashboard met fictief demo-profiel' },
-      { src: '/projects/mindflow-active-session.png', alt: 'MindFlow actieve coachsessie' },
-      { src: '/projects/mindflow-kaders.png', alt: 'MindFlow profiel met werkhypotheses' },
+      { src: '/projects/mindflow-source-profiel-vakog-demo.png', alt: 'MindFlow Mijn profiel met fictieve VAKOG-signalen' },
+      { src: '/projects/mindflow-source-verdieping.png', alt: 'MindFlow verdieping en oefeningen' },
     ],
     href: getProjectStory('mindflow')?.href,
     cta: 'Lees het projectverhaal',
@@ -133,11 +134,12 @@ const prototypes: Prototype[] = [
       'Daarom ontwierp ik een ritme van weekreview, dagstart, werkmodus en afsluiting. Met een Top 3, energie-inzicht en parkeerplaats testte ik wat helpt om bewuster te kiezen.',
     ],
     image: {
-      src: '/projects/focusflow-personal-workmodus-current-demo.png',
-      alt: 'FocusFlow Personal Werkmodus met fictieve weekfocus, taken en agenda',
+      src: '/projects/focusflow-personal-portfolio-overview-v2.png',
+      alt: 'FocusFlow Personal portfolio-overzicht met werkmodus, weekreview en dagstart',
     },
     examples: [
       { src: '/projects/focusflow-personal-top3-current-demo.png', alt: 'FocusFlow Personal Dagstart met een fictieve Top 3' },
+      { src: '/projects/focusflow-personal-workmodus-current-demo.png', alt: 'FocusFlow Personal werkmodus met fictieve weekfocus en voortgang' },
       { src: '/projects/focusflow-personal-weekreview-current-demo.png', alt: 'FocusFlow Personal Weekreview met de keuze voor een terugblik' },
     ],
     href: focusFlowPersonalHref,
@@ -152,7 +154,7 @@ function PrototypeImage({
 }: {
   image: Prototype['image'];
   title: string;
-  onOpen: (image: Prototype['image']) => void;
+  onOpen: () => void;
 }) {
   return (
     <motion.button
@@ -161,11 +163,11 @@ function PrototypeImage({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45 }}
-      onClick={() => onOpen(image)}
+      onClick={onOpen}
       className="group relative block w-full overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-[0_18px_60px_rgba(15,23,42,0.08)]"
       aria-label={`Vergroot screenshot van ${title}`}
     >
-      <img src={image.src} alt={image.alt} loading="lazy" className="w-full object-contain object-top" />
+      <img src={image.src} alt={image.alt} loading="lazy" className="aspect-[3/2] w-full bg-slate-50 object-contain object-center" />
       <span className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-slate-700 shadow-sm backdrop-blur transition-transform group-hover:scale-105">
         <Maximize2 size={18} />
       </span>
@@ -183,10 +185,11 @@ function PrototypeCase({
 }: {
   prototype: Prototype;
   index: number;
-  onOpen: (image: Prototype['image']) => void;
+  onOpen: (images: GalleryImage[], activeIndex: number) => void;
 }) {
   const isEven = index % 2 === 0;
   const isExternalLink = prototype.href?.startsWith('http');
+  const galleryImages = [prototype.image, ...prototype.examples];
 
   return (
     <motion.article
@@ -254,19 +257,19 @@ function PrototypeCase({
           </div>
 
           <div className="lg:col-span-7">
-            <PrototypeImage image={prototype.image} title={prototype.title} onOpen={onOpen} />
+            <PrototypeImage image={prototype.image} title={prototype.title} onOpen={() => onOpen(galleryImages, 0)} />
             <div className="mt-5">
               <p className="mb-3 text-xs font-bold uppercase tracking-widest text-slate-400">Meer voorbeelden</p>
               <div className="grid grid-cols-3 gap-3">
-                {prototype.examples.map((example) => (
+                {prototype.examples.map((example, exampleIndex) => (
                   <button
                     key={example.src}
                     type="button"
-                    onClick={() => onOpen(example)}
+                    onClick={() => onOpen(galleryImages, exampleIndex + 1)}
                     className="group relative overflow-hidden rounded-xl border border-slate-200 bg-slate-50 shadow-sm"
                     aria-label={`Vergroot voorbeeld van ${prototype.title}: ${example.alt}`}
                   >
-                    <img src={example.src} alt={example.alt} loading="lazy" className="aspect-[4/3] w-full object-contain object-top" />
+                    <img src={example.src} alt={example.alt} loading="lazy" className="aspect-[4/3] w-full bg-slate-100 object-contain object-center" />
                     <span className="absolute inset-0 flex items-center justify-center bg-slate-950/0 text-white transition-colors group-hover:bg-slate-950/25">
                       <Maximize2 size={18} className="opacity-0 transition-opacity group-hover:opacity-100" />
                     </span>
@@ -282,7 +285,8 @@ function PrototypeCase({
 }
 
 export function Experiments() {
-  const [activeImage, setActiveImage] = useState<Prototype['image'] | null>(null);
+  const [activeGallery, setActiveGallery] = useState<{ images: GalleryImage[]; initialIndex: number } | null>(null);
+  const orderedPrototypes = [prototypes[1], prototypes[3], prototypes[2], prototypes[0]];
 
   return (
     <Section bg="light" id="voorbeelden">
@@ -307,36 +311,15 @@ export function Experiments() {
       </div>
 
       <div className="space-y-16">
-        {prototypes.map((prototype, index) => (
+        {orderedPrototypes.map((prototype, index) => (
           <div key={prototype.title}>
-            <PrototypeCase prototype={prototype} index={index} onOpen={setActiveImage} />
+            <PrototypeCase prototype={prototype} index={index} onOpen={(images, initialIndex) => setActiveGallery({ images, initialIndex })} />
           </div>
         ))}
       </div>
 
-      {activeImage ? (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 p-4 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
-          aria-label={activeImage.alt}
-          onClick={() => setActiveImage(null)}
-        >
-          <button
-            type="button"
-            className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-slate-900 shadow-lg"
-            onClick={() => setActiveImage(null)}
-            aria-label="Sluit vergrote afbeelding"
-          >
-            <X size={22} />
-          </button>
-          <img
-            src={activeImage.src}
-            alt={activeImage.alt}
-            className="max-h-[92vh] max-w-[96vw] rounded-2xl bg-white object-contain shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
-          />
-        </div>
+      {activeGallery ? (
+        <PortfolioLightbox images={activeGallery.images} initialIndex={activeGallery.initialIndex} onClose={() => setActiveGallery(null)} />
       ) : null}
     </Section>
   );
