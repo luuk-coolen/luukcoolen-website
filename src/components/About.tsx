@@ -14,7 +14,7 @@ export function About() {
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">Van praktijkervaring naar zorginnovatie</h2>
           <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-            Ik ben <span className="font-semibold text-slate-900">Luuk Coolen</span>. Ik werk als bewindvoerder en was eerder persoonlijk begeleider in de GGZ/LVB. Mijn basis ligt in het maatschappelijk werk.
+            Ik ben <span className="font-semibold text-slate-900">Luuk Coolen</span>. Vanaf september 2026 werk ik als consultant zorg &amp; IT bij FITZ. Ik heb ervaring als bewindvoerder en persoonlijk begeleider in de GGZ/LVB. Mijn basis ligt in het maatschappelijk werk.
           </p>
           <div className="space-y-6 text-slate-600 leading-relaxed text-lg">
             <p>
@@ -43,6 +43,10 @@ export function About() {
 
             <div className="space-y-8">
               {[
+                {
+                  title: 'Consultant zorg & IT · FITZ',
+                  desc: 'Vanaf september 2026: werken op het snijvlak van zorg, IT en procesverbetering.',
+                },
                 {
                   title: 'Bewindvoerder',
                   desc: 'Werken met complexe dossiers waarin informatie, prioriteiten, afspraken en besluitvorming zorgvuldig moeten samenkomen.',

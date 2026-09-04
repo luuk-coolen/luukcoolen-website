@@ -44,7 +44,7 @@ export function Hero() {
         >
           <p className="font-medium text-slate-800">Ik wil bijdragen aan zorg die slimmer georganiseerd is, zonder dat deze minder menselijk wordt.</p>
           <p>
-            Vanuit mijn ervaring in zorg en bewindvoering onderzoek ik hoe digitale hulpmiddelen en AI kunnen zorgen voor meer overzicht, betere samenwerking en meer ruimte voor het echte werk.
+            Vanaf september 2026 werk ik als consultant zorg &amp; IT bij FITZ. Vanuit mijn ervaring in zorg en bewindvoering onderzoek ik hoe digitale hulpmiddelen en AI kunnen zorgen voor meer overzicht, betere samenwerking en meer ruimte voor het echte werk.
           </p>
           <p>Deze site laat zien welke praktijkvragen ik onderzoek, wat ik daarbij maak en vooral wat ik ervan leer.</p>
         </motion.div>
