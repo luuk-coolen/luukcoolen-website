@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 export type GalleryImage = {
@@ -16,6 +16,19 @@ export function PortfolioLightbox({ images, initialIndex, onClose }: PortfolioLi
   const [activeIndex, setActiveIndex] = useState(initialIndex);
   const activeImage = images[activeIndex];
   const hasMultipleImages = images.length > 1;
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      if (opener?.isConnected) opener.focus({ preventScroll: true });
+    };
+  }, []);
 
   useEffect(() => {
     setActiveIndex(initialIndex);
@@ -23,11 +36,28 @@ export function PortfolioLightbox({ images, initialIndex, onClose }: PortfolioLi
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose();
+      }
+      if (event.key === 'Tab') {
+        const buttons = dialogRef.current?.querySelectorAll<HTMLButtonElement>('button');
+        const first = buttons?.[0];
+        const last = buttons?.[buttons.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }
       if (event.key === 'ArrowLeft' && hasMultipleImages) {
+        event.preventDefault();
         setActiveIndex((index) => (index - 1 + images.length) % images.length);
       }
       if (event.key === 'ArrowRight' && hasMultipleImages) {
+        event.preventDefault();
         setActiveIndex((index) => (index + 1) % images.length);
       }
     };
@@ -41,6 +71,7 @@ export function PortfolioLightbox({ images, initialIndex, onClose }: PortfolioLi
 
   return (
     <div
+      ref={dialogRef}
       className="fixed inset-0 z-[100] h-dvh w-screen overflow-hidden bg-slate-950/90 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
@@ -49,6 +80,7 @@ export function PortfolioLightbox({ images, initialIndex, onClose }: PortfolioLi
     >
       <div className="relative h-full w-full" onClick={(event) => event.stopPropagation()}>
         <button
+          ref={closeButtonRef}
           type="button"
           className="absolute right-3 top-3 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-slate-900 shadow-lg sm:right-6 sm:top-6"
           onClick={onClose}

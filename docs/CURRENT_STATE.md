@@ -12,6 +12,7 @@ LuukCoolen.nl is een persoonlijke portfolio- en leerportfoliowebsite rond projec
 
 ## Recent afgerond
 
+- D1 deel 1: alle vier projectpagina’s delen dezelfde verplichte secties, inclusief digitale ondersteuning en grenzen. Homepage en projectpagina gebruiken per project één overzicht en drie voorbeelden uit `projectStories.ts`, met dezelfde galerij en lightbox. De bestaande beeldbestanden zijn behouden.
 - Recente Git-geschiedenis vermeldt mobiele sectienavigatie, aangescherpte portfolio-copy en navigatie, een FocusFlow Personal-casestudy en verwijdering van een GitHub-projectlink.
 - De actieve roadmap beschrijft eerdere positionering richting zorginnovatie, projectgroepering en directe projectlinks.
 - Portfolioverhaal, projectlinks en appingangen zijn opnieuw gecontroleerd voor FocusFlow Personal, WoonBuddy en MindFlow.

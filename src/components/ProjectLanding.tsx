@@ -1,11 +1,19 @@
+import { useCallback, useState } from 'react';
 import { ArrowLeft, ArrowRight, CheckCircle2, ExternalLink, ShieldCheck } from 'lucide-react';
-import type { ProjectStory } from '../config/projectStories';
+import type { ProjectImage, ProjectStory } from '../config/projectStories';
+
+import { ProjectOverview, ProjectExamples } from './ProjectGallery';
+import { PortfolioLightbox } from './PortfolioLightbox';
 
 function Eyebrow({ children }: { children: string }) {
   return <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">{children}</p>;
 }
 
 export function ProjectLanding({ story }: { story: ProjectStory }) {
+  const [galleryIndex, setGalleryIndex] = useState<number | null>(null);
+  const openGallery = (_images: ProjectImage[], index: number) => setGalleryIndex(index);
+  const closeGallery = useCallback(() => setGalleryIndex(null), []);
+
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-6 text-slate-900 md:px-8 md:py-10">
       <div className="mx-auto max-w-6xl">
@@ -18,13 +26,18 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
           </a>
         </header>
 
-        <section className="mt-12 rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:p-12">
-          <Eyebrow>{story.eyebrow}</Eyebrow>
-          <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-tight md:text-6xl">{story.label}</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">{story.summary}</p>
-          <a href={story.appHref} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 font-bold text-white shadow-lg shadow-teal-500/20 transition-colors hover:bg-brand-dark">
-            Open app <ArrowRight size={18} />
-          </a>
+        <section className="mt-12 grid items-center gap-8 lg:grid-cols-2 rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:p-12">
+          <div className="min-w-0">
+            <Eyebrow>{story.eyebrow}</Eyebrow>
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-tight md:text-5xl">{story.label}</h1>
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">{story.summary}</p>
+            <a href={story.appHref} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 font-bold text-white shadow-lg shadow-teal-500/20 transition-colors hover:bg-brand-dark">
+              Open app <ArrowRight size={18} />
+            </a>
+          </div>
+          <div className="min-w-0">
+            <ProjectOverview media={story.media} title={story.label} onOpen={openGallery} />
+          </div>
         </section>
 
         <div className="mt-12 space-y-12">
@@ -48,20 +61,18 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
             </div>
           </section>
 
-          {story.process ? (
-            <section className="rounded-3xl border border-slate-200 bg-white p-7 md:p-9">
-              <Eyebrow>Van probleem naar aanpak</Eyebrow>
-              <div className="mt-6 grid gap-4 md:grid-cols-3">
-                {story.process.map((step, index) => (
-                  <article key={step.title} className="rounded-2xl bg-slate-50 p-5">
-                    <span className="mb-4 flex h-7 w-7 items-center justify-center rounded-full bg-brand-light text-xs font-bold text-brand">{index + 1}</span>
-                    <h2 className="font-bold">{step.title}</h2>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.text}</p>
-                  </article>
-                ))}
-              </div>
-            </section>
-          ) : null}
+          <section className="rounded-3xl border border-slate-200 bg-white p-7 md:p-9">
+            <Eyebrow>Van probleem naar aanpak</Eyebrow>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {story.process.map((step, index) => (
+                <article key={step.title} className="rounded-2xl bg-slate-50 p-5">
+                  <span className="mb-4 flex h-7 w-7 items-center justify-center rounded-full bg-brand-light text-xs font-bold text-brand">{index + 1}</span>
+                  <h2 className="font-bold">{step.title}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.text}</p>
+                </article>
+              ))}
+            </div>
+          </section>
 
           <section>
             <Eyebrow>Mijn analyse en keuzes</Eyebrow>
@@ -89,42 +100,33 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
             </ol>
           </section>
 
-          {story.images.length > 0 ? (
-            <section>
-              <Eyebrow>Schermen uit de demo</Eyebrow>
-              <h2 className="mt-3 text-3xl font-bold">Schermen uit het leerprototype</h2>
-              <div className="mt-6 grid gap-5 md:grid-cols-3">
-                {story.images.map((image) => (
-                  <figure key={image.src} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-                    <img src={image.src} alt={image.alt} loading="lazy" className="aspect-[4/3] w-full bg-slate-50 object-contain object-center" />
-                    <figcaption className="p-4 text-sm font-medium text-slate-600">{image.alt}</figcaption>
-                  </figure>
-                ))}
-              </div>
-            </section>
-          ) : null}
+          <section>
+            <Eyebrow>Schermen uit de demo</Eyebrow>
+            <h2 className="mt-3 text-3xl font-bold">Schermen uit het leerprototype</h2>
+            <div className="mt-6">
+              <ProjectExamples media={story.media} title={story.label} onOpen={openGallery} />
+            </div>
+          </section>
 
           {story.screenshotNote ? (
             <p className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-950">{story.screenshotNote}</p>
           ) : null}
 
-          {story.ai ? (
-            <section className="grid gap-6 rounded-3xl bg-slate-900 p-7 text-white md:grid-cols-2 md:p-9">
-              <div>
-                <Eyebrow>AI waar dat helpt</Eyebrow>
-                <h2 className="mt-3 text-2xl font-bold">Wat AI doet — en wat niet</h2>
-                <p className="mt-4 leading-relaxed text-slate-200">{story.ai.actual}</p>
-                <p className="mt-4 rounded-2xl bg-white/10 p-4 text-sm leading-relaxed text-slate-200"><strong className="text-white">Zonder AI: </strong>{story.ai.nonAi}</p>
-                <p className="mt-4 text-sm leading-relaxed text-slate-300">{story.ai.distinction}</p>
-              </div>
-              <div className="rounded-2xl bg-white p-6 text-slate-900">
-                <ShieldCheck className="text-brand" size={25} />
-                <h2 className="mt-4 text-lg font-bold">Waar ik nog op wil letten</h2>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">{story.ai.privacy}</p>
-                <p className="mt-4 border-t border-slate-200 pt-4 text-sm font-medium leading-relaxed text-slate-700">{story.ai.openPoint}</p>
-              </div>
-            </section>
-          ) : null}
+          <section className="grid gap-6 rounded-3xl bg-slate-900 p-7 text-white md:grid-cols-2 md:p-9">
+            <div>
+              <Eyebrow>Digitale ondersteuning en grenzen</Eyebrow>
+              <h2 className="mt-3 text-2xl font-bold text-white">Ondersteuning met duidelijke grenzen</h2>
+              <p className="mt-4 leading-relaxed text-slate-200">{story.support.role}</p>
+              <p className="mt-4 rounded-2xl bg-white/10 p-4 text-sm leading-relaxed text-slate-200"><strong className="text-white">Vaste workflow: </strong>{story.support.workflow}</p>
+              <p className="mt-4 text-sm leading-relaxed text-slate-300">{story.support.control}</p>
+            </div>
+            <div className="rounded-2xl bg-white p-6 text-slate-900">
+              <ShieldCheck className="text-brand" size={25} />
+              <h2 className="mt-4 text-lg font-bold">Gegevens en open vragen</h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">{story.support.dataConsiderations}</p>
+              <p className="mt-4 border-t border-slate-200 pt-4 text-sm font-medium leading-relaxed text-slate-700">{story.support.openQuestion}</p>
+            </div>
+          </section>
 
           <section className="grid gap-8 md:grid-cols-[1.15fr_0.85fr]">
             <div>
@@ -166,7 +168,7 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
 
         <section className="mt-12 flex flex-col items-start justify-between gap-5 rounded-3xl bg-slate-900 p-7 text-white md:flex-row md:items-center md:p-10">
           <div>
-            <h2 className="text-2xl font-bold">Zelf de huidige app bekijken?</h2>
+            <h2 className="text-2xl font-bold text-white">Zelf de huidige app bekijken?</h2>
             <p className="mt-2 max-w-xl text-slate-300">Deze pagina vertelt over vraag, keuzes en open stappen. De app opent afzonderlijk in een nieuw tabblad.</p>
           </div>
           <a href={story.appHref} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-5 py-3 font-bold text-slate-900 transition-colors hover:bg-slate-100">
@@ -178,6 +180,9 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
           <a href="/" className="inline-flex items-center gap-2 font-bold text-brand"><CheckCircle2 size={16} /> Terug naar LuukCoolen.nl</a>
         </footer>
       </div>
+      {galleryIndex !== null ? (
+        <PortfolioLightbox images={[story.media.overview, ...story.media.examples]} initialIndex={galleryIndex} onClose={closeGallery} />
+      ) : null}
     </main>
   );
 }

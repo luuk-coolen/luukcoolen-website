@@ -2,7 +2,9 @@ import { projectLinks } from './projectLinks';
 
 type ProcessStep = { title: string; text: string };
 type Choice = { title: string; reason: string };
-type AiStory = { actual: string; nonAi: string; distinction: string; privacy: string; openPoint: string };
+export type ProjectImage = { src: string; alt: string };
+export type ProjectMedia = { overview: ProjectImage; examples: [ProjectImage, ProjectImage, ProjectImage] };
+type SupportStory = { role: string; workflow: string; control: string; dataConsiderations: string; openQuestion: string };
 
 export type ProjectStory = {
   slug: string;
@@ -13,15 +15,15 @@ export type ProjectStory = {
   summary: string;
   problem: { situation: string; friction: string };
   users: { description: string; needs: string[] };
-  process?: ProcessStep[];
+  process: ProcessStep[];
   choices: Choice[];
   prototype: string;
   workflow: string[];
-  ai?: AiStory;
+  support: SupportStory;
   implementation: { intro: string; questions: string[] };
   learning: string[];
   status: { current: string; works: string; prototype: string; question: string };
-  images: { src: string; alt: string }[];
+  media: ProjectMedia;
   screenshotNote?: string;
 };
 
@@ -55,6 +57,13 @@ export const projectStories: ProjectStory[] = [
     ],
     prototype: 'FocusFlow brengt dagstart, Top 3, werkmodus, weekplanning en weekreview samen. Zo werd een persoonlijk ritme zichtbaar in plaats van een verzameling losse schermen.',
     workflow: ['Bekijk wat er vandaag en deze week speelt', 'Kies een haalbare Top 3', 'Werk vanuit één overzicht en parkeer afleiding', 'Sluit af en gebruik de terugblik voor de volgende week'],
+    support: {
+      role: 'FocusFlow Personal ondersteunt een persoonlijk ritme: eerst kiezen, dan uitvoeren en daarna terugkijken.',
+      workflow: 'Dagstart, Top 3, werkmodus en weekreview verbinden de verschillende momenten van de dag en week.',
+      control: 'Ik bepaal zelf mijn prioriteiten en wat kan wachten. De workflow maakt keuzes zichtbaar zonder die voor mij te maken.',
+      dataConsiderations: 'Planning en reflecties kunnen persoonlijk zijn. Bij verdere ontwikkeling wil ik bepalen welke gegevens lokaal en persoonlijk moeten blijven en hoe eventuele sync daarbij past.',
+      openQuestion: 'Hoe ondersteun je een gewoonte zonder dat de app dwingend wordt?',
+    },
     implementation: {
       intro: 'Als ik FocusFlow buiten mijn eigen gebruik verder zou brengen, wil ik vooral dit onderzoeken:',
       questions: ['Voor wie werkt dit ritme ook, en wanneer juist niet?', 'Welke gegevens moeten persoonlijk en lokaal blijven?', 'Hoe ondersteun je een gewoonte zonder dat de app dwingend wordt?', 'Welke feedback maakt het ritme op langere termijn bruikbaar?'],
@@ -66,11 +75,17 @@ export const projectStories: ProjectStory[] = [
       prototype: 'Of hetzelfde ritme voor anderen werkt, en hoe sync daarbij past, wil ik nog onderzoeken.',
       question: 'Wat blijft overeind van dit persoonlijke ritme wanneer anderen ermee werken?',
     },
-    images: [
-      { src: '/projects/focusflow-personal-workmodus-current-demo.png', alt: 'FocusFlow Personal Werkmodus met weekfocus, taken en agenda' },
-      { src: '/projects/focusflow-personal-top3-current-demo.png', alt: 'FocusFlow Personal Dagstart met een Top 3' },
-      { src: '/projects/focusflow-personal-weekreview-current-demo.png', alt: 'FocusFlow Personal Weekreview met een terugblik' },
+    media: {
+      overview: {
+        src: '/projects/focusflow-personal-portfolio-overview-v2.png',
+        alt: 'FocusFlow Personal portfolio-overzicht met werkmodus, weekreview en dagstart',
+      },
+      examples: [
+      { src: '/projects/focusflow-personal-top3-current-demo.png', alt: 'FocusFlow Personal Dagstart met een fictieve Top 3' },
+      { src: '/projects/focusflow-personal-workmodus-current-demo.png', alt: 'FocusFlow Personal werkmodus met fictieve weekfocus en voortgang' },
+      { src: '/projects/focusflow-personal-weekreview-current-demo.png', alt: 'FocusFlow Personal Weekreview met de keuze voor een terugblik' },
     ],
+    },
   },
   {
     slug: 'woonbuddy', label: 'WoonBuddy', href: '/projecten/woonbuddy', appHref: appHref('Woonbuddy'), eyebrow: 'Begeleid wonen en dagelijkse structuur',
@@ -95,12 +110,12 @@ export const projectStories: ProjectStory[] = [
     ],
     prototype: 'Ik vertaalde dit naar een bewonersdashboard met Woonstart, activiteiten, doelen en Contact & Hulp. De demo gebruikt voorbeeldgegevens, zodat het ontwerp veilig te bekijken is.',
     workflow: ['Start vanuit een rustig overzicht', 'Kies een Woonstart-onderdeel, activiteit of taak', 'Volg vaste stappen op eigen tempo', 'Bespreek voortgang en vragen met begeleiding'],
-    ai: {
-      actual: 'WoonBuddy kan AI gebruiken voor chat, extra taak-uitleg en suggesties bij activiteiten. Dat is ondersteunend, niet de basis van de app.',
-      nonAi: 'Woonstart, taken, planning, reminders en rollen volgen vaste stappen in de applicatie.',
-      distinction: 'Een chatantwoord kan helpen, maar vervangt geen begeleider en beslist niet wat een bewoner moet doen.',
-      privacy: 'De portfolio toont alleen voorbeeldgegevens. Bij echt gebruik moet zorgvuldig worden bepaald welke informatie wel en niet naar een AI-dienst mag.',
-      openPoint: 'Ik wil vooral testen hoe duidelijk AI-hulp moet worden uitgelegd, zodat bewoners weten wanneer ze zelf of met begeleiding verder kunnen.',
+    support: {
+      role: 'WoonBuddy kan AI gebruiken voor chat, extra taak-uitleg en suggesties bij activiteiten. Dat is ondersteunend, niet de basis van de app.',
+      workflow: 'Woonstart, taken, planning, reminders en rollen volgen vaste stappen in de applicatie.',
+      control: 'Een chatantwoord kan helpen, maar vervangt geen begeleider en beslist niet wat een bewoner moet doen.',
+      dataConsiderations: 'De portfolio toont alleen voorbeeldgegevens. Bij echt gebruik moet zorgvuldig worden bepaald welke informatie wel en niet naar een AI-dienst mag.',
+      openQuestion: 'Ik wil vooral testen hoe duidelijk AI-hulp moet worden uitgelegd, zodat bewoners weten wanneer ze zelf of met begeleiding verder kunnen.',
     },
     implementation: {
       intro: 'Voordat je dit in een woonorganisatie inzet, wil ik eerst samen met bewoners en begeleiders antwoord krijgen op deze vragen:',
@@ -113,11 +128,17 @@ export const projectStories: ProjectStory[] = [
       prototype: 'Ik wil nog leren wat per bewoner en per begeleidingssituatie nodig is.',
       question: 'Welke uitleg en welke vorm van begeleiding helpen zonder de app ingewikkeld te maken?',
     },
-    images: [
-      { src: '/projects/woonbuddy-overview.png', alt: 'WoonBuddy bewonersdashboard met overzicht, taken en begeleiding' },
-      { src: '/projects/woonbuddy-taken.png', alt: 'WoonBuddy begeleide taak met stap voor stap hulp' },
-      { src: '/projects/woonbuddy-ontwikkeling.png', alt: 'WoonBuddy doelen en ontwikkeling in de demo' },
+    media: {
+      overview: {
+        src: '/projects/woonbuddy-portfolio-overview-v2.png',
+        alt: 'WoonBuddy portfolio-overzicht met woonstart, begeleiding en ontwikkeling',
+      },
+      examples: [
+      { src: '/projects/woonbuddy-v2-source-woonstart.png', alt: 'WoonBuddy Woonstart in de fictieve bewonersdemo' },
+      { src: '/projects/woonbuddy-v2-source-activiteiten.png', alt: 'WoonBuddy activiteiten met fictieve gezamenlijke en buitenactiviteiten' },
+      { src: '/projects/woonbuddy-v2-source-contact-hulp.png', alt: 'WoonBuddy Contact & Hulp met fictieve begeleidingsopties' },
     ],
+    },
   },
   {
     slug: 'mindflow', label: 'MindFlow', href: '/projecten/mindflow', appHref: appHref('MindFlow'), eyebrow: 'AI, reflectie en voorzichtige hypothesen',
@@ -142,12 +163,12 @@ export const projectStories: ProjectStory[] = [
     ],
     prototype: 'MindFlow combineert een coachsessie met een dashboard, mogelijke patronen, oefeningen en Mijn Data. Daarmee onderzocht ik niet alleen het gesprek zelf, maar ook wat iemand daarna met een inzicht kan doen.',
     workflow: ['Start met een concrete situatie', 'Voer een korte coachsessie', 'Bekijk mogelijke invalshoeken', 'Kies zelf een klein experiment of een oefening'],
-    ai: {
-      actual: 'AI ondersteunt de coachchat en kan mogelijke invalshoeken teruggeven.',
-      nonAi: 'Navigatie, oefeningen, opslag en de gekozen vervolgstap zijn gewone onderdelen van de app.',
-      distinction: 'Een AI-reactie is iets om te onderzoeken, geen conclusie over de gebruiker.',
-      privacy: 'Reflecties kunnen persoonlijk zijn. Daarom moet iemand goed kunnen bepalen wat wordt bewaard of gedeeld.',
-      openPoint: 'Ik wil nog testen wanneer een AI-reactie echt helpt en wanneer een gesprek beter bij een mens past.',
+    support: {
+      role: 'AI ondersteunt de coachchat en kan mogelijke invalshoeken teruggeven.',
+      workflow: 'Navigatie, oefeningen, opslag en de gekozen vervolgstap zijn gewone onderdelen van de app.',
+      control: 'Een AI-reactie is iets om te onderzoeken, geen conclusie over de gebruiker.',
+      dataConsiderations: 'Reflecties kunnen persoonlijk zijn. Daarom moet iemand goed kunnen bepalen wat wordt bewaard of gedeeld.',
+      openQuestion: 'Ik wil nog testen wanneer een AI-reactie echt helpt en wanneer een gesprek beter bij een mens past.',
     },
     implementation: {
       intro: 'Als ik MindFlow verder zou brengen, wil ik eerst antwoord op deze praktische vragen:',
@@ -160,11 +181,17 @@ export const projectStories: ProjectStory[] = [
       prototype: 'Ik wil nog testen hoe andere gebruikers de toon, suggesties en grenzen van de begeleiding ervaren.',
       question: 'Wanneer voelt een AI-gesprek helpend, en wanneer te stellig?',
     },
-    images: [
-      { src: '/projects/mindflow-dashboard.png', alt: 'MindFlow dashboard met demo-profiel en volgende stap' },
-      { src: '/projects/mindflow-active-session.png', alt: 'MindFlow actieve coachsessie met concrete vervolgactie' },
-      { src: '/projects/mindflow-kaders.png', alt: 'MindFlow profiel met werkhypotheses en signalen' },
+    media: {
+      overview: {
+        src: '/projects/mindflow-portfolio-overview.png',
+        alt: 'MindFlow portfolio-overzicht met dashboard, coachsessie en reflectieworkflow',
+      },
+      examples: [
+      { src: '/projects/mindflow-dashboard.png', alt: 'MindFlow dashboard met fictief demo-profiel' },
+      { src: '/projects/mindflow-source-profiel-vakog-demo.png', alt: 'MindFlow Mijn profiel met fictieve VAKOG-signalen' },
+      { src: '/projects/mindflow-source-verdieping.png', alt: 'MindFlow verdieping en oefeningen' },
     ],
+    },
   },
   {
     slug: 'focusflow-bewind', label: 'FocusFlow Bewind', href: '/projecten/focusflow-bewind', appHref: appHref('FocusFlow Bewind'), eyebrow: 'Werkflow en besluitvoorbereiding',
@@ -189,6 +216,13 @@ export const projectStories: ProjectStory[] = [
     ],
     prototype: 'De demo brengt inbox- en agendascan, Top 3, cliëntvoorbereiding, weekplanning en reflectie samen in één werkritme.',
     workflow: ['Breng signalen, inbox en agenda samen', 'Weeg urgentie, context en vervolgstap af', 'Kies een haalbare Top 3', 'Verbind dagplanning, weekplanning en reflectie'],
+    support: {
+      role: 'FocusFlow Bewind helpt de werkdag te ordenen en professionele afwegingen voor te bereiden.',
+      workflow: 'De demo volgt vaste stappen voor inbox- en agendascan, Top 3, cliëntvoorbereiding, weekplanning en reflectie.',
+      control: 'De bewindvoerder weegt urgentie, context en vervolgstappen af. Het hulpmiddel neemt dat professionele oordeel niet over.',
+      dataConsiderations: 'De portfolio gebruikt voorbeeldinhoud. Voordat echte dossiergegevens of systeemkoppelingen worden gebruikt, wil ik bepalen welke informatie nodig is en wie die mag zien of aanpassen.',
+      openQuestion: 'Welke informatie helpt bij prioriteren zonder het professionele oordeel te overschrijven?',
+    },
     implementation: {
       intro: 'Voordat ik dit in de praktijk verder zou brengen, wil ik vooral deze vragen met bewindvoerders onderzoeken:',
       questions: ['Sluit deze volgorde aan op echte werkdruk en uitzonderingen?', 'Welke informatie is nodig om goed te prioriteren?', 'Hoe houd je rollen, rechten en verantwoordelijkheid helder?', 'Welke ondersteuning en evaluatie zijn nodig voordat je breder gaat werken?'],
@@ -200,11 +234,17 @@ export const projectStories: ProjectStory[] = [
       prototype: 'Koppelingen met echte systemen en gebruik in de dagelijkse praktijk zijn de volgende onderwerpen om te onderzoeken.',
       question: 'Welke informatie helpt bij prioriteren zonder het professionele oordeel te overschrijven?',
     },
-    images: [
-      { src: '/projects/focusflow-overview.jpg', alt: 'FocusFlow Bewind overzicht met prioriteiten en reflectie' },
-      { src: '/projects/focusflow-stap-4.jpg', alt: 'FocusFlow Bewind actieplan en Top 3' },
-      { src: '/projects/focusflow-weekplanning.jpg', alt: 'FocusFlow Bewind weekplanning' },
+    media: {
+      overview: {
+        src: '/projects/focusflow-overview.jpg',
+        alt: 'FocusFlow overzicht met werkdagen, prioriteiten en reflectie',
+      },
+      examples: [
+      { src: '/projects/focusflow-stap-2.jpg', alt: 'FocusFlow intake en inbox scan' },
+      { src: '/projects/focusflow-stap-4.jpg', alt: 'FocusFlow actieplan en top drie' },
+      { src: '/projects/focusflow-weekplanning.jpg', alt: 'FocusFlow weekplanning' },
     ],
+    },
   },
 ];
 

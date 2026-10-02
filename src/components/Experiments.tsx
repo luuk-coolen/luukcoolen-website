@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import type { ReactNode } from 'react';
 import { Section } from './ui/Section';
-import { ArrowRight, Brain, CheckCircle2, Compass, Home, LayoutTemplate, Maximize2 } from 'lucide-react';
+import { ArrowRight, Brain, CheckCircle2, Compass, Home, LayoutTemplate } from 'lucide-react';
 import { motion } from 'motion/react';
-import { getProjectStory } from '../config/projectStories';
+import { getProjectStory, type ProjectMedia } from '../config/projectStories';
 import { PortfolioLightbox, type GalleryImage } from './PortfolioLightbox';
+import { ProjectGallery } from './ProjectGallery';
 
 type Prototype = {
   title: string;
@@ -14,14 +15,7 @@ type Prototype = {
   description: string;
   bullets: string[];
   approach: string[];
-  image: {
-    src: string;
-    alt: string;
-  };
-  examples: {
-    src: string;
-    alt: string;
-  }[];
+  media: ProjectMedia;
   href?: string;
   cta: string;
 };
@@ -46,15 +40,7 @@ const prototypes: Prototype[] = [
       'Ik begon bij de dagelijkse werksituatie: waar ontstaat druk en welke keuzes moeten worden voorbereid?',
       'Vervolgens ordende ik signalen, inbox, agenda en planning tot een vaste volgorde voor de werkdag.',
     ],
-    image: {
-      src: '/projects/focusflow-overview.jpg',
-      alt: 'FocusFlow overzicht met werkdagen, prioriteiten en reflectie',
-    },
-    examples: [
-      { src: '/projects/focusflow-stap-2.jpg', alt: 'FocusFlow intake en inbox scan' },
-      { src: '/projects/focusflow-stap-4.jpg', alt: 'FocusFlow actieplan en top drie' },
-      { src: '/projects/focusflow-weekplanning.jpg', alt: 'FocusFlow weekplanning' },
-    ],
+    media: getProjectStory('focusflow-bewind')!.media,
     href: getProjectStory('focusflow-bewind')?.href,
     cta: 'Lees het projectverhaal',
   },
@@ -75,15 +61,7 @@ const prototypes: Prototype[] = [
       'Ik begon bij momenten waarop bewoners of begeleiders snel willen weten wat er verwacht wordt en wat er gepland staat.',
       'Die vragen vertaalde ik naar herkenbare onderdelen en ik testte hoeveel uitleg per scherm werkelijk nodig is.',
     ],
-    image: {
-      src: '/projects/woonbuddy-portfolio-overview-v2.png',
-      alt: 'WoonBuddy portfolio-overzicht met woonstart, begeleiding en ontwikkeling',
-    },
-    examples: [
-      { src: '/projects/woonbuddy-v2-source-woonstart.png', alt: 'WoonBuddy Woonstart in de fictieve bewonersdemo' },
-      { src: '/projects/woonbuddy-v2-source-activiteiten.png', alt: 'WoonBuddy activiteiten met fictieve gezamenlijke en buitenactiviteiten' },
-      { src: '/projects/woonbuddy-v2-source-contact-hulp.png', alt: 'WoonBuddy Contact & Hulp met fictieve begeleidingsopties' },
-    ],
+    media: getProjectStory('woonbuddy')!.media,
     href: getProjectStory('woonbuddy')?.href,
     cta: 'Lees het projectverhaal',
   },
@@ -104,15 +82,7 @@ const prototypes: Prototype[] = [
       'Ik onderzocht hoe een AI-gesprek richting krijgt wanneer sessies, profielen, hypotheses en bronnen met elkaar samenhangen.',
       'Daarna bouwde ik de dialoog op rond terugkijken, samenvatten en het voorbereiden van een volgende stap.',
     ],
-    image: {
-      src: '/projects/mindflow-portfolio-overview.png',
-      alt: 'MindFlow portfolio-overzicht met dashboard, coachsessie en reflectieworkflow',
-    },
-    examples: [
-      { src: '/projects/mindflow-dashboard.png', alt: 'MindFlow dashboard met fictief demo-profiel' },
-      { src: '/projects/mindflow-source-profiel-vakog-demo.png', alt: 'MindFlow Mijn profiel met fictieve VAKOG-signalen' },
-      { src: '/projects/mindflow-source-verdieping.png', alt: 'MindFlow verdieping en oefeningen' },
-    ],
+    media: getProjectStory('mindflow')!.media,
     href: getProjectStory('mindflow')?.href,
     cta: 'Lees het projectverhaal',
   },
@@ -133,50 +103,11 @@ const prototypes: Prototype[] = [
       'Ik begon vanuit mijn eigen behoefte aan overzicht tijdens een periode met sollicitaties, projecten en persoonlijke ontwikkeling. Gewone takenlijsten verzamelden vooral meer werk en gaven weinig richting.',
       'Daarom ontwierp ik een ritme van weekreview, dagstart, werkmodus en afsluiting. Met een Top 3, energie-inzicht en parkeerplaats testte ik wat helpt om bewuster te kiezen.',
     ],
-    image: {
-      src: '/projects/focusflow-personal-portfolio-overview-v2.png',
-      alt: 'FocusFlow Personal portfolio-overzicht met werkmodus, weekreview en dagstart',
-    },
-    examples: [
-      { src: '/projects/focusflow-personal-top3-current-demo.png', alt: 'FocusFlow Personal Dagstart met een fictieve Top 3' },
-      { src: '/projects/focusflow-personal-workmodus-current-demo.png', alt: 'FocusFlow Personal werkmodus met fictieve weekfocus en voortgang' },
-      { src: '/projects/focusflow-personal-weekreview-current-demo.png', alt: 'FocusFlow Personal Weekreview met de keuze voor een terugblik' },
-    ],
+    media: getProjectStory('focusflow-personal')!.media,
     href: focusFlowPersonalHref,
     cta: focusFlowPersonalHref ? 'Lees het projectverhaal' : 'In ontwikkeling',
   },
 ];
-
-function PrototypeImage({
-  image,
-  title,
-  onOpen,
-}: {
-  image: Prototype['image'];
-  title: string;
-  onOpen: () => void;
-}) {
-  return (
-    <motion.button
-      type="button"
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.45 }}
-      onClick={onOpen}
-      className="group relative block w-full overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-[0_18px_60px_rgba(15,23,42,0.08)]"
-      aria-label={`Vergroot screenshot van ${title}`}
-    >
-      <img src={image.src} alt={image.alt} loading="lazy" className="aspect-[3/2] w-full bg-slate-50 object-contain object-center" />
-      <span className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-slate-700 shadow-sm backdrop-blur transition-transform group-hover:scale-105">
-        <Maximize2 size={18} />
-      </span>
-      <span className="absolute bottom-4 left-4 rounded-full bg-slate-950/70 px-3 py-1 text-xs font-bold uppercase tracking-widest text-white opacity-0 backdrop-blur transition-opacity group-hover:opacity-100">
-        Klik om te vergroten
-      </span>
-    </motion.button>
-  );
-}
 
 function PrototypeCase({
   prototype,
@@ -189,7 +120,6 @@ function PrototypeCase({
 }) {
   const isEven = index % 2 === 0;
   const isExternalLink = prototype.href?.startsWith('http');
-  const galleryImages = [prototype.image, ...prototype.examples];
 
   return (
     <motion.article
@@ -257,26 +187,7 @@ function PrototypeCase({
           </div>
 
           <div className="lg:col-span-7">
-            <PrototypeImage image={prototype.image} title={prototype.title} onOpen={() => onOpen(galleryImages, 0)} />
-            <div className="mt-5">
-              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-slate-400">Meer voorbeelden</p>
-              <div className="grid grid-cols-3 gap-3">
-                {prototype.examples.map((example, exampleIndex) => (
-                  <button
-                    key={example.src}
-                    type="button"
-                    onClick={() => onOpen(galleryImages, exampleIndex + 1)}
-                    className="group relative overflow-hidden rounded-xl border border-slate-200 bg-slate-50 shadow-sm"
-                    aria-label={`Vergroot voorbeeld van ${prototype.title}: ${example.alt}`}
-                  >
-                    <img src={example.src} alt={example.alt} loading="lazy" className="aspect-[4/3] w-full bg-slate-100 object-contain object-center" />
-                    <span className="absolute inset-0 flex items-center justify-center bg-slate-950/0 text-white transition-colors group-hover:bg-slate-950/25">
-                      <Maximize2 size={18} className="opacity-0 transition-opacity group-hover:opacity-100" />
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
+            <ProjectGallery media={prototype.media} title={prototype.title} onOpen={onOpen} />
           </div>
         </div>
       </div>
@@ -286,6 +197,7 @@ function PrototypeCase({
 
 export function Experiments() {
   const [activeGallery, setActiveGallery] = useState<{ images: GalleryImage[]; initialIndex: number } | null>(null);
+  const closeGallery = useCallback(() => setActiveGallery(null), []);
   const orderedPrototypes = [prototypes[1], prototypes[3], prototypes[2], prototypes[0]];
 
   return (
@@ -319,7 +231,7 @@ export function Experiments() {
       </div>
 
       {activeGallery ? (
-        <PortfolioLightbox images={activeGallery.images} initialIndex={activeGallery.initialIndex} onClose={() => setActiveGallery(null)} />
+        <PortfolioLightbox images={activeGallery.images} initialIndex={activeGallery.initialIndex} onClose={closeGallery} />
       ) : null}
     </Section>
   );

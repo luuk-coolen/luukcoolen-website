@@ -61,7 +61,7 @@ No active roadmap was found before this file. `docs/old-version.md` remains a hi
 
 ## Current active / open sprint
 
-Unclear / needs user confirmation.
+D1 is in progress. Part 1 is complete: the four project pages share mandatory sections and centralized existing gallery images with the homepage, including keyboard-accessible fullscreen viewing. Part 2 remains: four new overview compositions from existing demo screenshots, using one shared template. No routes, app URLs or deployment settings changed.
 
 Most likely next sprint: keep portfolio proof current after Codex project migration, verify all project links/subdomains, and decide which projects should be presented as active, prototype, archived, or learning-only.
 
