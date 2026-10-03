@@ -61,7 +61,7 @@ No active roadmap was found before this file. `docs/old-version.md` remains a hi
 
 ## Current active / open sprint
 
-D1 is in progress. Part 1 is complete: the four project pages share mandatory sections and centralized existing gallery images with the homepage, including keyboard-accessible fullscreen viewing. Part 2 remains: four new overview compositions from existing demo screenshots, using one shared template. No routes, app URLs or deployment settings changed.
+D1 is complete. Part 1 unified the four project pages and galleries. Part 2 added four 2400 × 1600 overview compositions from the existing demo screenshots, generated with one shared template and exported as PNG and lossless WebP. Homepage, project pages and lightbox share the new WebP overviews. Original screenshots, routes, app URLs and deployment settings are preserved.
 
 Most likely next sprint: keep portfolio proof current after Codex project migration, verify all project links/subdomains, and decide which projects should be presented as active, prototype, archived, or learning-only.
 

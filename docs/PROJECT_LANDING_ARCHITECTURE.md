@@ -44,9 +44,17 @@ Dit maakt de portfolio geen app-store: de pagina vertelt eerst wat is onderzocht
 
 ## Grenzen en vervolg
 
-WoonBuddy, MindFlow en FocusFlow Personal gebruiken bestaande privacyveilige demobeelden. FocusFlow Bewind behoudt zijn bestaande overzicht, inboxscan, Top 3 en weekplanning. Nieuwe captures met persoonlijke planning horen niet in het portfolio.
+De twaalf bestaande bronbeelden zijn visueel gecontroleerd: bewoners- en cliëntinformatie is voorbeeldinhoud, FocusFlow Personal gebruikt demotaken en MindFlow gebruikt bestaande demo-/testschermen. Het MindFlow-dashboard toont Luuks eigen publieke naam; er zijn geen vertrouwelijke cliëntgegevens aangetroffen. Nieuwe captures met persoonlijke planning horen niet in het portfolio.
 
-D1 deel 2 blijft open: vier nieuwe overzichtscomposities van 2400 × 1600 pixels in één stijl, uit de bestaande demoscreenshots. De huidige bestanden blijven als bron behouden. De actieve planning staat uitsluitend in `docs/PROJECT_ROADMAP.md`.
+D1 deel 2 is afgerond: vier nieuwe overzichtscomposities van 2400 × 1600 pixels hebben dezelfde achtergrond, koppen, teal-accenten en screenshotposities. Eén groot scherm staat links en twee kleinere rechts; de volledige bronbeelden behouden hun verhoudingen, zonder uitsnijden of verzonnen appschermen. PNG en verliesloze WebP zijn opgeslagen als `{slug}-portfolio-overview-d1`; `ProjectStory.media.overview` gebruikt WebP voor alle drie de weergaven. Oude overzichten en originele screenshots blijven behouden. De actieve planning staat uitsluitend in `docs/PROJECT_ROADMAP.md`.
+
+## Overzichten opnieuw genereren
+
+`scripts/generate-project-overviews.mjs` leest projectnaam, bestaande samenvatting en de drie voorbeelden rechtstreeks uit `projectStories.ts`. Alleen korte schermlabels staan in het script. Voor FocusFlow Personal is Werkmodus het grote scherm; de volgorde van de losse galerijvoorbeelden blijft behouden.
+
+Voer `node --import tsx scripts/generate-project-overviews.mjs` uit met `sharp` beschikbaar. In Codex desktop kan `NODE_PATH` wijzen naar het door `load_workspace_dependencies` teruggegeven Node.js-pakketpad. Er zijn geen nieuwe applicatiedependencies nodig. Het script gebruikt Arial en Georgia; identieke runtime, fonts en bronbeelden geven dezelfde exports.
+
+Het script schrijft uitsluitend de acht D1-overzichtsbestanden. Het wijzigt geen bronbeelden, configuratie, routes of app-links. Bij gewijzigde samenvattingen controleert het script of de tekst in de vaste kopruimte past.
 
 ## Validatie D1 deel 1 — 2 oktober 2026
 
@@ -56,3 +64,12 @@ D1 deel 2 blijft open: vier nieuwe overzichtscomposities van 2400 × 1600 pixels
 - Homepagecontrole: dezelfde zestien beeldverwijzingen als de vier projectpagina's; galerij opent en sluit. Geen JavaScript-pageerrors.
 - Eindcontrole: lint, build, beeld- en routeverwijzingen en diffcheck geslaagd. Koppen in donkere panelen zijn expliciet wit; de contrastcorrectie is gericht op alle vier routes gecontroleerd.
 - De browser-CLI was niet beschikbaar. De gebundelde runtime werkte met een tijdelijke Vite-server op `127.0.0.1:3002`; de oorspronkelijke previewverbinding was niet bereikbaar vanuit de controleomgeving.
+
+## Validatie D1 deel 2 — 3 oktober 2026
+
+- Baseline en eindcontrole: lint, productiebuild en diffcheck geslaagd.
+- Vier PNG- en vier WebP-bestanden zijn exact 2400 × 1600 pixels. Een tweede generatieronde leverde dezelfde acht bestanden byte voor byte op; de gedecodeerde WebP-pixels zijn identiek aan PNG.
+- Alle vier composities zijn visueel bekeken, met detailuitsneden op oorspronkelijke pixelgrootte. De twaalf losse bronbeelden zijn behouden.
+- Productiepreview met headless Edge: vier projectroutes en de homepage op 390, 768 en 1440 pixels. Nieuwe overzichten laden overal, de tien paginasecties blijven gelijk en er is geen horizontale overflow.
+- Lightbox: juiste nieuwe overzichtsafbeelding, volledige afbeelding binnen de viewport, vorige/volgende, Escape, focusherstel en herstel van achtergrondscrollen slagen. Ook de vier homepagegalerijen openen het juiste overzicht. Geen JavaScript-pageerrors.
+- WebP-overzichten variëren van circa 327 tot 959 kB; alle vier samen circa 2,25 MB. Kleine screenshottekst in een collage blijft bedoeld om via de losse galerijbeelden nader te bekijken.

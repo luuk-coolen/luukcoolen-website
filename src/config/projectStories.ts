@@ -77,8 +77,8 @@ export const projectStories: ProjectStory[] = [
     },
     media: {
       overview: {
-        src: '/projects/focusflow-personal-portfolio-overview-v2.png',
-        alt: 'FocusFlow Personal portfolio-overzicht met werkmodus, weekreview en dagstart',
+        src: '/projects/focusflow-personal-portfolio-overview-d1.webp',
+        alt: 'FocusFlow Personal overzicht met werkmodus, Dagstart/Top 3 en weekreview',
       },
       examples: [
       { src: '/projects/focusflow-personal-top3-current-demo.png', alt: 'FocusFlow Personal Dagstart met een fictieve Top 3' },
@@ -130,8 +130,8 @@ export const projectStories: ProjectStory[] = [
     },
     media: {
       overview: {
-        src: '/projects/woonbuddy-portfolio-overview-v2.png',
-        alt: 'WoonBuddy portfolio-overzicht met woonstart, begeleiding en ontwikkeling',
+        src: '/projects/woonbuddy-portfolio-overview-d1.webp',
+        alt: 'WoonBuddy overzicht met Woonstart, activiteiten en Contact & Hulp',
       },
       examples: [
       { src: '/projects/woonbuddy-v2-source-woonstart.png', alt: 'WoonBuddy Woonstart in de fictieve bewonersdemo' },
@@ -183,8 +183,8 @@ export const projectStories: ProjectStory[] = [
     },
     media: {
       overview: {
-        src: '/projects/mindflow-portfolio-overview.png',
-        alt: 'MindFlow portfolio-overzicht met dashboard, coachsessie en reflectieworkflow',
+        src: '/projects/mindflow-portfolio-overview-d1.webp',
+        alt: 'MindFlow overzicht met dashboard, profiel/VAKOG en verdieping en oefeningen',
       },
       examples: [
       { src: '/projects/mindflow-dashboard.png', alt: 'MindFlow dashboard met fictief demo-profiel' },
@@ -236,8 +236,8 @@ export const projectStories: ProjectStory[] = [
     },
     media: {
       overview: {
-        src: '/projects/focusflow-overview.jpg',
-        alt: 'FocusFlow overzicht met werkdagen, prioriteiten en reflectie',
+        src: '/projects/focusflow-bewind-portfolio-overview-d1.webp',
+        alt: 'FocusFlow Bewind overzicht met inboxscan, cliëntvoorbereiding en weekplanning',
       },
       examples: [
       { src: '/projects/focusflow-stap-2.jpg', alt: 'FocusFlow intake en inbox scan' },
