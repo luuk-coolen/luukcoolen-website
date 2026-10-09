@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, ExternalLink } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import { Hero } from './components/Hero';
 import { Experiments } from './components/Experiments';
 import { WhyProjects } from './components/WhyProjects';
@@ -215,6 +216,7 @@ export default function App() {
       </footer>
 
       {isPrivacyOpen ? <Privacy onClose={() => setIsPrivacyOpen(false)} /> : null}
+      <Analytics />
     </div>
   );
 }
