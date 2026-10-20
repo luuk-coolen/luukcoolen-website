@@ -1,5 +1,5 @@
 import { FileSearch, HeartHandshake, Workflow } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Reveal } from './ui/Reveal';
 import { Section } from './ui/Section';
 
 const questions = [
@@ -19,46 +19,35 @@ const questions = [
 
 export function WhyProjects() {
   return (
-    <Section bg="white" id="missie">
+    <Section bg="dark" id="missie">
       <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <Reveal
           className="max-w-3xl"
         >
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-brand">Motivatie</p>
-          <h2 className="mb-8 text-3xl font-bold leading-tight md:text-5xl">Mijn missie</h2>
-          <div className="space-y-5 text-lg leading-relaxed text-slate-600">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-teal-300">Mijn missie</p>
+          <h2 className="section-title mb-8 text-white">Meer ruimte voor het echte werk.</h2>
+          <div className="space-y-5 text-lg leading-relaxed text-slate-300">
             <p>
-              Ik bouw deze projecten omdat ik in zorg en bewindvoering terugkerende frictie zag: cliënten missen soms een duidelijke volgende stap, terwijl professionals tijd verliezen aan zoeken en administratie.
-            </p>
-            <p>
-              Met kleine prototypes maak ik zulke knelpunten concreet en onderzoek ik waar digitale hulpmiddelen kunnen zorgen voor meer overzicht, continuïteit en ruimte voor contact.
+              In zorg en bewindvoering zag ik hoe onduidelijke stappen en versnipperde informatie tijd kosten. Ik onderzoek hoe digitale hulpmiddelen meer overzicht geven, met ruimte voor menselijk contact.
             </p>
           </div>
-        </motion.div>
+        </Reveal>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="rounded-2xl border border-slate-200 bg-slate-50/70 p-6 md:p-8"
+        <Reveal
+          className="rounded-3xl bg-white/5 p-6 md:p-8"
         >
-          <p className="mb-5 text-sm font-bold text-slate-900">Vragen die steeds terugkomen</p>
-          <div className="divide-y divide-slate-200">
+          <p className="mb-5 text-sm font-semibold text-white">Vragen die steeds terugkomen</p>
+          <div className="divide-y divide-white/10">
             {questions.map((question) => (
               <div key={question.text} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-light text-brand">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-400/10 text-teal-300">
                   {question.icon}
                 </div>
-                <p className="pt-1 text-sm font-medium leading-relaxed text-slate-700">{question.text}</p>
+                <p className="pt-1 text-sm font-medium leading-relaxed text-slate-200">{question.text}</p>
               </div>
             ))}
           </div>
-        </motion.div>
+        </Reveal>
       </div>
 
     </Section>

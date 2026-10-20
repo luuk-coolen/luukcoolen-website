@@ -4,18 +4,19 @@ import type { ProjectImage, ProjectMedia } from '../config/projectStories';
 type GalleryProps = {
   media: ProjectMedia;
   title: string;
+  priority?: boolean;
   onOpen: (images: ProjectImage[], initialIndex: number) => void;
 };
 
-export function ProjectOverview({ media, title, onOpen }: GalleryProps) {
+export function ProjectOverview({ media, title, onOpen, priority = false }: GalleryProps) {
   return (
     <button
       type="button"
       onClick={() => onOpen([media.overview, ...media.examples], 0)}
-      className="group relative block w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+      className="group relative block w-full overflow-hidden rounded-3xl bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
       aria-label={`Vergroot overzicht van ${title}`}
     >
-      <img src={media.overview.src} alt={media.overview.alt} className="aspect-[3/2] w-full object-contain object-center" />
+      <img src={media.overview.src} alt={media.overview.alt} width={2400} height={1600} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'auto'} className="gallery-image aspect-[3/2] w-full object-contain object-center" />
       <span className="absolute right-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-slate-700 shadow-sm">
         <Maximize2 size={18} />
       </span>
@@ -34,7 +35,7 @@ export function ProjectExamples({ media, title, onOpen }: GalleryProps) {
             className="group relative block w-full bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-brand"
             aria-label={`Vergroot voorbeeld van ${title}: ${image.alt}`}
           >
-            <img src={image.src} alt={image.alt} loading="lazy" className="aspect-[4/3] w-full object-contain object-center" />
+            <img src={image.src} alt={image.alt} width={1200} height={900} loading="lazy" className="gallery-image aspect-[4/3] w-full object-contain object-center" />
             <span className="absolute bottom-2 right-2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-700 shadow-sm">
               <Maximize2 size={16} />
             </span>

@@ -1,0 +1,16 @@
+{
+  "checked": "2026-10-07",
+  "fitz": {
+    "page": "https://www.fitz.nl/",
+    "selector": "svg[viewBox=\"0 0 633 239\"]",
+    "file": "fitz.svg",
+    "note": "Officiële inline SVG; externe layoutclasses/style verwijderd, geometrie en oorspronkelijke #00003B behouden."
+  },
+  "riwis": {
+    "page": "https://www.riwis.nl/",
+    "selector": "header svg#Laag_1",
+    "file": "riwis.svg",
+    "note": "Officiële inline SVG met oorspronkelijke vorm en kleuren behouden."
+  },
+  "usage": "Lokale persoonlijke portfoliopreview: FITZ werkgever, Riwis opdrachtorganisatie. Geen partner- of aanbevelingsclaim. Geen algemene hergebruiklicentie vastgesteld; geen publicatie in deze ronde."
+}

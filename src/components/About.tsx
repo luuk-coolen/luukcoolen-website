@@ -1,37 +1,28 @@
 import { Section } from './ui/Section';
-import { motion } from 'motion/react';
+import { Reveal } from './ui/Reveal';
 import { Briefcase, ChevronRight, GraduationCap } from 'lucide-react';
 
 export function About() {
   return (
     <Section bg="light" id="over-mij">
       <div className="grid lg:grid-cols-2 gap-16 items-start">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <Reveal
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">Van praktijkervaring naar zorginnovatie</h2>
+          <p className="eyebrow mb-5">Over mij</p>
+          <h2 className="section-title mb-8">Van mensenwerk<br />naar zorg &amp; IT.</h2>
           <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-            Ik ben <span className="font-semibold text-slate-900">Luuk Coolen</span>. Vanaf september 2026 werk ik als consultant zorg &amp; IT bij FITZ. Ik heb ervaring als bewindvoerder en persoonlijk begeleider in de GGZ/LVB. Mijn basis ligt in het maatschappelijk werk.
+            Ik ben <span className="font-semibold text-slate-900">Luuk Coolen</span>. Vanaf september 2026 werk ik als consultant zorg &amp; IT bij FITZ. Mijn ervaring als bewindvoerder en persoonlijk begeleider in de GGZ/LVB vormt de praktijkbasis voor mijn werk; mijn basis ligt in het maatschappelijk werk.
           </p>
-          <div className="space-y-6 text-slate-600 leading-relaxed text-lg">
+          <div className="text-slate-600 leading-relaxed text-lg">
             <p>
-              Mijn interesse in zorginnovatie ontstond op de werkvloer. Ik zag hoe onduidelijkheid, versnipperde gegevens of een slecht passend systeem direct invloed hebben op cliënten én professionals.
-            </p>
-            <p>
-              Ik vind het interessant om zulke knelpunten uit te pluizen, terug te brengen tot een heldere vraag en ideeën vervolgens praktisch te testen. De projecten op deze site laten zien hoe ik daarin leer.
+              Mijn interesse in digitalisering ontstond op de werkvloer. Ik zoek graag uit waar het vastloopt, breng dat terug tot een heldere vraag en test ideeën in de praktijk.
             </p>
           </div>
-        </motion.div>
+          <img src="/luuk-coolen-portfolio.jpg" alt="Luuk Coolen" width={800} height={1000} loading="lazy" className="mt-8 aspect-[4/3] w-full max-w-md rounded-3xl object-cover object-[48%_24%]" />
+        </Reveal>
 
         <div className="space-y-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <Reveal
             className="card-3d p-8"
           >
             <div className="flex items-center gap-3 mb-8">
@@ -67,13 +58,9 @@ export function About() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <Reveal
             className="card-3d p-8"
           >
             <div className="flex items-center gap-3 mb-8">
@@ -96,7 +83,7 @@ export function About() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </Section>

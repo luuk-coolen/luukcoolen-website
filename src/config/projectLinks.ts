@@ -31,6 +31,12 @@ export const projectLinks: ProjectLink[] = [
     section: 'portfolio',
   },
   {
+    label: 'FocusFlow Remixed',
+    href: 'https://focusflow-remixed-acceptance-luuk-coolen-projects.vercel.app/',
+    description: 'Beveiligde Preview',
+    section: 'development',
+  },
+  {
     label: 'FitFlow',
     href: 'https://fitflow-tracker-759367249229.europe-west2.run.app',
     description: 'Fitness en voortgang',
@@ -52,6 +58,11 @@ export const projectLinks: ProjectLink[] = [
     label: 'Bruiloft Gasten',
     href: 'https://bruiloft-gasten-app-759367249229.us-west1.run.app',
     description: 'Gasten en planning',
+    section: 'development',
+  },
+  {
+    label: 'Midstar',
+    href: 'https://midstar.ai.studio/',
     section: 'development',
   },
 ];

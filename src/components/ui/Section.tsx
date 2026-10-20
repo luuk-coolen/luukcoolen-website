@@ -9,14 +9,14 @@ interface SectionProps {
 
 export function Section({ id, className = '', children, bg = 'light' }: SectionProps) {
   const bgColors = {
-    light: 'bg-stone-50',
+    light: 'bg-slate-50',
     white: 'bg-white',
-    dark: 'bg-stone-900 text-stone-50',
+    dark: 'bg-slate-950 text-slate-50',
   };
 
   return (
-    <section id={id} className={`py-20 md:py-32 ${bgColors[bg]} ${className}`}>
-      <div className="max-w-5xl mx-auto px-6 md:px-12">
+    <section id={id} className={`portfolio-section ${bgColors[bg]} ${className}`}>
+      <div className="portfolio-container">
         {children}
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { Bot, GitBranch, Network, Search, Waypoints } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Reveal } from './ui/Reveal';
 import { Section } from './ui/Section';
 
 const lessons = [
@@ -33,48 +33,28 @@ const lessons = [
 export function Lessons() {
   return (
     <Section bg="light" id="leren" className="border-y border-slate-100">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+      <Reveal
         className="max-w-4xl"
       >
         <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-brand">Ontwikkeling</p>
-        <h2 className="mb-8 text-3xl font-bold leading-tight md:text-5xl">Wat deze projecten mij hebben geleerd</h2>
+        <h2 className="mb-8 section-title">Bouwen verandert<br />hoe ik kijk.</h2>
         <div className="max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">
-          <p>
-            Door te bouwen en testen leerde ik dat een goede digitale oplossing niet bij technologie begint, maar bij de mensen die ermee werken. Daardoor werk ik nu minder vanuit losse functies en meer vanuit analyse, kleine stappen en tussentijds toetsen.
-          </p>
-          <p className="mt-5">
-            Ik kijk daarbij ook naar wat er ná het prototype nodig is: hoe gebruikers begrijpen wat een systeem doet, waar AI wel en niet wordt gebruikt, welke informatie zorgvuldig verwerkt moet worden en hoe een oplossing verantwoord in de praktijk kan landen.
-          </p>
+          <p>Een goede digitale oplossing begint bij mensen. Door te bouwen leerde ik beter analyseren, keuzes begrenzen en eerder toetsen wat werkt.</p>
         </div>
-      </motion.div>
+      </Reveal>
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {lessons.map((lesson, index) => (
-          <motion.article
-            key={lesson.title}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: index * 0.06 }}
-            className="rounded-2xl border border-slate-200 bg-slate-50/70 p-6"
+          <Reveal as="article" key={lesson.title} delay={index * 0.04}
+            className="rounded-3xl bg-white p-7"
           >
             <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-light text-brand">
               {lesson.icon}
             </div>
             <h3 className="mb-3 text-lg font-bold leading-snug">{lesson.title}</h3>
             <p className="text-sm leading-relaxed text-slate-600">{lesson.description}</p>
-          </motion.article>
+          </Reveal>
         ))}
-      </div>
-
-      <div className="mt-10 border-t border-slate-200 pt-8">
-        <p className="max-w-4xl text-lg leading-relaxed text-slate-700">
-          Deze manier van werken versterkte mijn interesse in zorginnovatie: technologie niet als doel, maar als middel om mensen en hun werk beter te ondersteunen.
-        </p>
       </div>
     </Section>
   );

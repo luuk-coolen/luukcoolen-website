@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" fill="none">
+  <title>Van onderzoeken naar een idee en bijstellen</title>
+  <circle cx="140" cy="140" r="111" fill="#e6f0f6"/>
+  <path d="M70 79c64-39 142-7 152 62M216 185c-42 66-126 67-161 10M44 149c-6-23-3-39 6-53" stroke="#9cbecd" stroke-width="2" stroke-dasharray="4 8" stroke-linecap="round"/>
+  <g stroke="#17657c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="34" y="55" width="71" height="83" rx="16" fill="#f7fbfd"/>
+    <path d="M48 76h20M48 86h12M48 116h42" stroke="#8aaebe"/>
+    <circle cx="74" cy="96" r="12"/>
+    <path d="m83 105 9 9"/>
+    <rect x="158" y="90" width="83" height="88" rx="20" fill="#d4e9f2"/>
+    <path d="M185 123a15 15 0 1 1 27 9c-4 5-6 7-6 13h-14c0-6-2-8-6-13M192 151h14M196 157h6M199 105v-7M176 113l-5-4M223 113l5-4"/>
+    <rect x="77" y="179" width="88" height="62" rx="16" fill="#f7fbfd"/>
+    <circle cx="100" cy="210" r="11" fill="#deeee8"/>
+    <path d="m94 210 4 4 8-8M122 203h26M122 214h19"/>
+  </g>
+  <circle cx="133" cy="66" r="4" fill="#82b4c5"/>
+  <circle cx="214" cy="213" r="5" fill="#82b4c5"/>
+</svg>

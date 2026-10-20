@@ -4,9 +4,10 @@ import type { ProjectImage, ProjectStory } from '../config/projectStories';
 
 import { ProjectOverview, ProjectExamples } from './ProjectGallery';
 import { PortfolioLightbox } from './PortfolioLightbox';
+import { Reveal } from './ui/Reveal';
 
 function Eyebrow({ children }: { children: string }) {
-  return <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">{children}</p>;
+  return <p className="eyebrow">{children}</p>;
 }
 
 export function ProjectLanding({ story }: { story: ProjectStory }) {
@@ -15,7 +16,7 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
   const closeGallery = useCallback(() => setGalleryIndex(null), []);
 
   return (
-    <main className="min-h-screen bg-slate-50 px-4 py-6 text-slate-900 md:px-8 md:py-10">
+    <main className="project-page">
       <div className="mx-auto max-w-6xl">
         <header className="flex items-center justify-between gap-4">
           <a href="/" className="inline-flex items-center gap-2 text-sm font-bold text-slate-700 transition-colors hover:text-brand">
@@ -26,22 +27,23 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
           </a>
         </header>
 
-        <section className="mt-12 grid items-center gap-8 lg:grid-cols-2 rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:p-12">
-          <div className="min-w-0">
+        <Reveal as="section" className="mt-14 pb-4 text-center md:mt-20">
+          <div className="mx-auto max-w-3xl">
             <Eyebrow>{story.eyebrow}</Eyebrow>
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-tight md:text-5xl">{story.label}</h1>
+            <p className="prototype-badge mx-auto mt-5 w-fit">Leerprototype</p>
+            <h1 className="mt-4 max-w-3xl text-5xl font-semibold tracking-[-0.05em] md:text-7xl">{story.label}</h1>
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">{story.summary}</p>
-            <a href={story.appHref} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 font-bold text-white shadow-lg shadow-teal-500/20 transition-colors hover:bg-brand-dark">
+            <a href={story.appHref} target="_blank" rel="noopener noreferrer" className="button-primary mt-7">
               Open app <ArrowRight size={18} />
             </a>
           </div>
-          <div className="min-w-0">
-            <ProjectOverview media={story.media} title={story.label} onOpen={openGallery} />
+          <div className="mx-auto mt-10 max-w-5xl md:mt-14">
+            <ProjectOverview media={story.media} title={story.label} onOpen={openGallery} priority />
           </div>
-        </section>
+        </Reveal>
 
-        <div className="mt-12 space-y-12">
-          <section>
+        <div className="project-chapters mt-16 space-y-16 md:mt-24 md:space-y-24">
+          <Reveal as="section">
             <Eyebrow>Kern</Eyebrow>
             <div className="mt-4 grid gap-5 md:grid-cols-2">
               <article className="rounded-2xl border border-slate-200 bg-white p-6">
@@ -59,9 +61,9 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
                 </ul>
               </article>
             </div>
-          </section>
+          </Reveal>
 
-          <section className="rounded-3xl border border-slate-200 bg-white p-7 md:p-9">
+          <Reveal as="section" className="rounded-3xl border border-slate-200 bg-white p-7 md:p-9">
             <Eyebrow>Van probleem naar aanpak</Eyebrow>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {story.process.map((step, index) => (
@@ -72,9 +74,9 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
                 </article>
               ))}
             </div>
-          </section>
+          </Reveal>
 
-          <section>
+          <Reveal as="section">
             <Eyebrow>Mijn analyse en keuzes</Eyebrow>
             <div className="mt-4 grid gap-4 md:grid-cols-3">
               {story.choices.map((choice) => (
@@ -84,9 +86,9 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
                 </article>
               ))}
             </div>
-          </section>
+          </Reveal>
 
-          <section className="rounded-3xl border border-slate-200 bg-white p-7 md:p-9">
+          <Reveal as="section" className="rounded-3xl border border-slate-200 bg-white p-7 md:p-9">
             <Eyebrow>Prototype</Eyebrow>
             <h2 className="mt-3 text-3xl font-bold">Zo werkt het in de app</h2>
             <p className="mt-4 max-w-3xl leading-relaxed text-slate-600">{story.prototype}</p>
@@ -98,21 +100,21 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
                 </li>
               ))}
             </ol>
-          </section>
+          </Reveal>
 
-          <section>
+          <Reveal as="section">
             <Eyebrow>Schermen uit de demo</Eyebrow>
             <h2 className="mt-3 text-3xl font-bold">Schermen uit het leerprototype</h2>
             <div className="mt-6">
               <ProjectExamples media={story.media} title={story.label} onOpen={openGallery} />
             </div>
-          </section>
+          </Reveal>
 
           {story.screenshotNote ? (
             <p className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-950">{story.screenshotNote}</p>
           ) : null}
 
-          <section className="grid gap-6 rounded-3xl bg-slate-900 p-7 text-white md:grid-cols-2 md:p-9">
+          <Reveal as="section" className="grid gap-6 rounded-3xl bg-slate-900 p-7 text-white md:grid-cols-2 md:p-9">
             <div>
               <Eyebrow>Digitale ondersteuning en grenzen</Eyebrow>
               <h2 className="mt-3 text-2xl font-bold text-white">Ondersteuning met duidelijke grenzen</h2>
@@ -126,9 +128,9 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
               <p className="mt-3 text-sm leading-relaxed text-slate-600">{story.support.dataConsiderations}</p>
               <p className="mt-4 border-t border-slate-200 pt-4 text-sm font-medium leading-relaxed text-slate-700">{story.support.openQuestion}</p>
             </div>
-          </section>
+          </Reveal>
 
-          <section className="grid gap-8 md:grid-cols-[1.15fr_0.85fr]">
+          <Reveal as="section" className="grid gap-8 md:grid-cols-[1.15fr_0.85fr]">
             <div>
               <Eyebrow>Als ik dit verder breng</Eyebrow>
               <h2 className="mt-3 text-3xl font-bold">Wat nog nodig zou zijn</h2>
@@ -147,9 +149,9 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
                 ))}
               </ul>
             </div>
-          </section>
+          </Reveal>
 
-          <section className="rounded-3xl border border-brand/20 bg-brand-light/40 p-7 md:p-9">
+          <Reveal as="section" className="rounded-3xl border border-brand/20 bg-brand-light/40 p-7 md:p-9">
             <Eyebrow>Status en volgende vraag</Eyebrow>
             <div className="mt-5 grid gap-5 md:grid-cols-2">
               <div>
@@ -163,10 +165,10 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
                 <p className="mt-4 rounded-2xl bg-white/80 p-4 font-medium leading-relaxed text-slate-800">{story.status.question}</p>
               </div>
             </div>
-          </section>
+          </Reveal>
         </div>
 
-        <section className="mt-12 flex flex-col items-start justify-between gap-5 rounded-3xl bg-slate-900 p-7 text-white md:flex-row md:items-center md:p-10">
+        <Reveal as="section" className="mt-12 flex flex-col items-start justify-between gap-5 rounded-3xl bg-slate-900 p-7 text-white md:flex-row md:items-center md:p-10">
           <div>
             <h2 className="text-2xl font-bold text-white">Zelf de huidige app bekijken?</h2>
             <p className="mt-2 max-w-xl text-slate-300">Deze pagina vertelt over vraag, keuzes en open stappen. De app opent afzonderlijk in een nieuw tabblad.</p>
@@ -174,7 +176,7 @@ export function ProjectLanding({ story }: { story: ProjectStory }) {
           <a href={story.appHref} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-5 py-3 font-bold text-slate-900 transition-colors hover:bg-slate-100">
             Open app <ExternalLink size={17} />
           </a>
-        </section>
+        </Reveal>
 
         <footer className="py-10 text-sm text-slate-500">
           <a href="/" className="inline-flex items-center gap-2 font-bold text-brand"><CheckCircle2 size={16} /> Terug naar LuukCoolen.nl</a>
