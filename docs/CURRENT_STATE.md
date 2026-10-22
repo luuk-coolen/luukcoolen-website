@@ -1,5 +1,23 @@
 # Current State
 
+## Remixed-productiedomein gekoppeld — 22 oktober 2026
+
+Directe gebruikersopdracht: gepubliceerd Remixed op focusflow.luukcoolen.nl, Bewind op focusflow-bewind.luukcoolen.nl; Remixed uit In ontwikkeling en een plan voor prominentere plaatsing. Beide appprojecten bevestigd. Het korte domein met officiële CLI domains add --force binnen hetzelfde team naar focusflow-remixed-preview overgezet. Alias-readback bevestigt Production dpl_5BE3tVyAY18GRpqDcVaBGth4xznf, broncommit volgens appstatus 6e3d0e5. Bewind nieuwe bestemming verified en HTTPS 200. Remixed-domein verified; anoniem HTTPS 302 naar Vercel SSO, bestaand Protection all bewust behouden. Geen appcode, IAM, OAuth of opslag gewijzigd.
+
+Portfolio: canonieke appbestemmingen bijgewerkt, Remixed als eerste portfolio-item en Bewind als vroeg leerproject achteraan. De gebruiker bevestigt de LETTERLIJKE remixlijn Bewind → Personal → Remixed; nu in de drie verhalen en homepagekopieën benoemd. Remixed-status en kennisgeving gaan nu over de beschermde publicatie, niet de acceptatieomgeving. Eigen projectpagina en vier fictieve offline beelden blijven. Plan voor grotere homepageplaatsing staat uitsluitend in PROJECT_ROADMAP.md; nog geen nieuwe featured-compositie uitgevoerd. Lint/build en diffcheck slagen. Git/publicatiestatus wordt bij afronding vastgelegd; eerdere overdracht is qua domeinkoppeling afgehandeld, volledige menselijke appacceptatie blijft bij de Remixed-taak. Browser-localStorage van Bewind is niet gemigreerd of gewist.
+
+## Bewind-adres en portfoliolinks los van Remixed-productie — 22 oktober 2026
+
+Gebruiker werkt zelf aan Remixed-productie en vraagt Bewind/verwijzingen alvast af te ronden. Oude en nieuwe Bewind-URL geven beide HTTPS 200 en exact dezelfde HTML; nieuw domein is verified bij bestaand Bewind-project. Canonieke Bewind-link lokaal stond al op focusflow-bewind.luukcoolen.nl; ook legacy /focusflow-redirect in vercel.json daarheen aangepast. Remixed blijft op de acceptatielink en focusflow.luukcoolen.nl blijft voorlopig gekoppeld aan Bewind. Geen Remixed-code/configuratie/IAM gewijzigd.
+
+Bewind gebruikt browser-localStorage: hostwissel migreert bestaande browsergegevens NIET. Geen gegevens gelezen, overgezet of gewist. Voor de latere overdracht van het oude adres eerst vaststellen of daar nog te behouden Bewind-gegevens staan. De voorbereide Remixed-projectpagina en portfolioherschikking blijven onderdeel van deze portfoliorelease; productieblokkades van de afzonderlijke Remixed-app blijven bij die uitvoering. Publicatiestatus volgt uit Git/Vercel, niet uit deze voorbereidingsnotitie.
+
+## Nachtelijke Remixed-controle — 21 oktober 2026, 23:30
+
+Nieuwe Bewind-bestemming bevestigd: HTTPS 200 en correcte Vercel-DNS. Bewind-link lokaal naar focusflow-bewind.luukcoolen.nl gezet. Acceptatie-alias staat op nieuwste READY Preview dpl_9YU67oukoK7qrw7Bzh7Ayuu4Dzie; Remixed HEAD 15f1a87. Anonieme Calendar/Todoist-routes geven JSON 401. Live eigenaaracceptatie niet afgerond: Edge niet verbonden, IAB-account toont geen Todoist-toegang en onbeschikbare Agenda. Geen wijziging aan account of gegevens gedaan.
+
+Production blokkeert bovendien expliciet in serverguard en OIDC/WIF-controles. Preview-env kopiëren is onvoldoende; concrete minimale vervolgstappen en bewijsgrenzen staan in docs/REMIXED_PRODUCTION_CHECK_2026-10-21.md. Daarom bestaande focusflow.luukcoolen.nl-toewijzing en SSO behouden. Portfolio voorbereidingen lokaal: lint/build PASS, zeven Remixed-hoofdstukken en zoom 150% gecontroleerd; mobiele override niet effectief, dus mobiele controle open. Geen commit/push/deploy. Overdracht docs/HANDOFF_2026-10-21_REMIXED.md is nog NIET afgerond. Eenmalige hervattingsautomation na deze run beëindigen; geen automatische herhaling.
+
 ## Git-/productierelease voorbereid — 20 oktober 2026
 
 Gebruiker heeft push en deploy expliciet gevraagd. Bestaande goedgekeurde React-portfolio, stijlen, organisatiebeelden/privacy en de dropdowncorrectie worden samen vastgelegd; eerdere publicaties waren lokale snapshots. Losse film-/stemgeneratiescripts en output blijven buiten Git. De vier dropdownprojecten openen direct de canonieke app in een nieuw tabblad; homepagekaarten behouden de projectverhalen. Lint/build en gerichte linkcontrole zijn geslaagd op dezelfde bronbestanden. Doel: origin/main en bestaand Vercel-project luukcoolen-website, productie luukcoolen.nl; geen deploymentinstellingen wijzigen. Controleer deploymentstatus en commit voor de definitieve publicatie-uitkomst; oudere opmerkingen over geen commit/push zijn historisch.

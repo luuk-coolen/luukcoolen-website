@@ -1,4 +1,5 @@
 import { projectLinks } from './projectLinks';
+import { remixedStory } from './remixedStory';
 
 type ProcessStep = { title: string; text: string };
 type Choice = { title: string; reason: string };
@@ -25,6 +26,10 @@ export type ProjectStory = {
   status: { current: string; works: string; prototype: string; question: string };
   media: ProjectMedia;
   screenshotNote?: string;
+  projectKind?: string;
+  appAction?: string;
+  appNotice?: string;
+  origin?: string;
 };
 
 function appHref(label: string) {
@@ -34,8 +39,10 @@ function appHref(label: string) {
 }
 
 export const projectStories: ProjectStory[] = [
+  remixedStory,
   {
     slug: 'focusflow-personal', label: 'FocusFlow Personal', href: '/projecten/focusflow-personal', appHref: appHref('FocusFlow Personal'), eyebrow: 'Persoonlijke structuur en zelfsturing',
+    origin: 'Personal is een remix van mijn eerdere FocusFlow Bewind-project. Ik verlegde de aandacht van bewindvoering naar mijn eigen planning. Personal werd later de basis voor FocusFlow Remixed.',
     summary: 'Ik bouwde FocusFlow vanuit een herkenbaar probleem: een volle takenlijst geeft nog geen richting. De app helpt mij eerst kiezen, dan uitvoeren en pas daarna weer vooruitkijken.',
     problem: {
       situation: 'Werk, afspraken, persoonlijke doelen en ideeën vragen soms allemaal tegelijk om aandacht.',
@@ -194,8 +201,9 @@ export const projectStories: ProjectStory[] = [
     },
   },
   {
-    slug: 'focusflow-bewind', label: 'FocusFlow Bewind', href: '/projecten/focusflow-bewind', appHref: appHref('FocusFlow Bewind'), eyebrow: 'Werkflow en besluitvoorbereiding',
-    summary: 'Vanuit mijn ervaring met bewindvoering onderzocht ik hoe je een drukke werkdag terugbrengt tot een helder proces: signaleren, prioriteren, voorbereiden en plannen.',
+    slug: 'focusflow-bewind', label: 'FocusFlow Bewind', href: '/projecten/focusflow-bewind', appHref: appHref('FocusFlow Bewind'), eyebrow: 'Werkflow en besluitvoorbereiding', projectKind: 'Vroeg leerproject',
+    origin: 'Hier begon de FocusFlow-lijn. Vanuit dit vroege leerproject maakte ik Personal als remix; Personal vormde vervolgens de basis voor Remixed. Bewind blijft zichtbaar als het begin van dat leerproces.',
+    summary: 'Een van mijn eerste projecten, vanuit mijn ervaring met bewindvoering. Ik begon in Google AI Studio en bracht het later over naar Codex. De demo laat mijn eerste verkenning zien van signaleren, prioriteren, voorbereiden en plannen.',
     problem: {
       situation: 'Dossiers, inbox, agenda en terugkerende handelingen vragen vaak tegelijk om aandacht.',
       friction: 'Wanneer urgentie, context en vervolgactie verspreid blijven, kost het veel tijd om rustig te bepalen wat eerst moet.',

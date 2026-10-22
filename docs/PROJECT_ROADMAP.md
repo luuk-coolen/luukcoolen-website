@@ -2,6 +2,20 @@
 
 ## Active roadmap rule
 
+22 October domain checkpoint: user explicitly authorized the short address for published Remixed. focusflow.luukcoolen.nl now belongs to focusflow-remixed-preview and aliases its READY Production dpl_5BE3tVyAY18GRpqDcVaBGth4xznf; Bewind remains on focusflow-bewind.luukcoolen.nl (HTTPS 200). Vercel SSO all unchanged, so anonymous Remixed root redirects to Vercel login. Portfolio content now states the user-confirmed literal remix lineage Bewind → Personal → Remixed. Older Preview-only blockers below are historical; Remixed production was prepared by the separate app task.
+
+## Voorstel: FocusFlow Remixed prominenter tonen — 22 oktober 2026
+
+Doel: de huidige eigen webapp zichtbaar als hoofdproject presenteren en de drie FocusFlow-generaties als leerproces uitleggen. Dit is een voorstel; de grotere homepagecompositie is nog niet uitgevoerd.
+
+1. **Remixed als eerste groot projectblok.** Titel, één concrete zin over dagstart/focus/reflectie en een groot, goed uitgesneden Werkmodus-overzicht. Primaire knop Lees het projectverhaal, secundair Open de app met korte uitleg dat toegang aanmelding vraagt. WoonBuddy behouden als tweede uitgebreid projectblok; MindFlow en de oudere FocusFlow-projecten daarna. Huidige persoonlijke hero, lichtblauwe stijl, animatietiming en Werkwijze behouden.
+2. **Een compacte ontwikkellijn met drie gekoppelde stappen.** Bewind: vroeg leerproject uit de praktijk van bewindvoering, gestart in AI Studio en later overgebracht naar Codex. Personal: letterlijke remix van Bewind voor eigen planning. Remixed: letterlijke remix van Personal en huidige gepubliceerde versie. Elk onderdeel verwijst naar het eigen projectverhaal; geen onbevestigde startmaanden of claim dat voorgangers automatisch zijn uitgefaseerd. Deze feitelijke lijn staat alvast in de bestaande projectteksten, een nieuwe visuele tijdlijn nog niet.
+3. **Projectverhaal actualiseren met gericht bewijs.** Houd de eigen Remixed-pagina; kies per hoofdstuk één passend, uniek beeld van de geaccepteerde versie met fictieve gegevens. Kort tonen wat is behouden, veranderd en geleerd ten opzichte van Personal. Alleen de hoofdstukken die dat nodig hebben extra beeld geven. Bestaande zoom en rustige herhaalanimaties behouden; geen nieuwe carrousel, rebrand of lange herhaalde featurelijsten.
+
+Acceptatie voor deze latere vormgeving: Remixed zonder horizontaal zoeken te vinden, WoonBuddy zichtbaar behouden, alle vijf verhalen bereikbaar op desktop en mobiel, de drie generaties begrijpelijk, screenshots leesbaar/inzoombaar en de appknop eerlijk over de beschermde toegang. Eerst deze compositie laten beoordelen; geen wijziging aan Remixed-auth, IAM of gegevensopslag binnen deze portfoliosprint.
+
+21 October Remixed checkpoint: fifth portfolio story and demo images prepared locally, Bewind labelled early work and its new HTTPS domain verified. Production switch remains open: live owner acceptance incomplete and existing backend/OIDC intentionally Preview-only. See CURRENT_STATE.md and REMIXED_PRODUCTION_CHECK_2026-10-21.md; no production, IAM, SSO or old-domain change, no push/deploy.
+
 8 October production checkpoint: explicitly approved portfolio published at https://luukcoolen.nl/ (Vercel READY dpl_ChtLUwVc6fPWXHrS8yhXBpnL58xq). Contact no longer waits for a reveal threshold at the page bottom. Live desktop/mobile Contact and four project routes verified; lint/build passed. Direct source snapshot, no commit/push or deployment-setting changes. Earlier local-only checkpoints below are historical. See CURRENT_STATE.md.
 
 8 October motion checkpoint: downward reveals now start at 55% viewport height on homepage and stories, with hero immediate and the approved earlier upward entrances retained. Durations and scroll-driven rail/process unchanged. Targeted large-screen/mobile checks and lint/build passed; no publication. See CURRENT_STATE.md.

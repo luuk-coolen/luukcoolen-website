@@ -7,9 +7,15 @@ export type ProjectLink = {
 
 export const projectLinks: ProjectLink[] = [
   {
-    label: 'FocusFlow Bewind',
+    label: 'FocusFlow Remixed',
     href: 'https://focusflow.luukcoolen.nl/',
-    description: 'Workflow en prioritering',
+    description: 'Dagstart, focus en reflectie',
+    section: 'portfolio',
+  },
+  {
+    label: 'FocusFlow Bewind',
+    href: 'https://focusflow-bewind.luukcoolen.nl/',
+    description: 'Vroeg leerproject · workflow en prioritering',
     section: 'portfolio',
   },
   {
@@ -29,12 +35,6 @@ export const projectLinks: ProjectLink[] = [
     href: 'https://focusflow-personal.luukcoolen.nl/',
     description: 'Persoonlijke structuur',
     section: 'portfolio',
-  },
-  {
-    label: 'FocusFlow Remixed',
-    href: 'https://focusflow-remixed-acceptance-luuk-coolen-projects.vercel.app/',
-    description: 'Beveiligde Preview',
-    section: 'development',
   },
   {
     label: 'FitFlow',

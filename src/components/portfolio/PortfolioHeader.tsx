@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { projectStories } from '../../config/projectStories';
 import { projectLinks } from '../../config/projectLinks';
+import { portfolioOrder } from './stories';
 
 export function PortfolioHeader() {
   const menu = useRef<HTMLDetailsElement>(null);
@@ -16,7 +17,7 @@ export function PortfolioHeader() {
     <a className="wordmark" href="#intro">Luuk Coolen<span>.</span></a>
     <div className="nav-links"><a href="#fitz">Werk bij FITZ</a><a href="#missie">Missie</a>
       <details className="more-projects" ref={menu}><summary>Projecten</summary><div className="project-menu"><p className="label">Portfolio-projecten</p>
-        {['focusflow-bewind', 'woonbuddy', 'mindflow', 'focusflow-personal'].map(slug => {
+        {portfolioOrder.map(slug => {
           const story = projectStories.find(item => item.slug === slug)!;
           const description = projectLinks.find(project => project.href === story.appHref)?.description;
           return <a key={slug} href={story.appHref} target="_blank" rel="noopener noreferrer"><span>{story.label}</span>{description && <small>{description}</small>}</a>;

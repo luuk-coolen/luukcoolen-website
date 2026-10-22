@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-10-22 — Remixed op kort productiedomein en drie generaties
+
+- focusflow.luukcoolen.nl op expliciete opdracht naar Remixed Production overgezet; Bewind behouden op het eigen geverifieerde domein. Vercel SSO behouden.
+- Remixed als portfolioproject, nieuwe appbestemmingen en eerlijke publicatiestatus. Letterlijke remixlijn Bewind → Personal → Remixed op basis van gebruikersbevestiging toegevoegd.
+- Voorstel voor een groter eerste Remixed-projectblok, behoud van WoonBuddy en compacte ontwikkellijn in PROJECT_ROADMAP.md. Geen grote homepageherbouw uitgevoerd.
+
+## 2026-10-22 — Bewind-bestemming voorbereiden op domeinoverdracht
+
+- HTTPS op nieuw Bewind-adres opnieuw bevestigd; oude/nieuwe HTML gelijk. Bewind-appbestemming en oude /focusflow-doorverwijzing gebruiken nu focusflow-bewind.luukcoolen.nl.
+- Remixed blijft via acceptatie bereikbaar; oude domeintoewijzing behouden. Browseropslag is hostgebonden en is niet gemigreerd.
+
+## 2026-10-21 — Remixed voorbereiden en nachtcontrole
+
+- Vijfde projectverhaal met fictieve offline beelden en bestaande animaties/zoom lokaal voorbereid; Remixed in portfolio, Bewind als vroeg leerproject achteraan.
+- Nieuwe Bewind-HTTPS-bestemming en DNS bevestigd, lokale applink aangepast; Remixed blijft op de beveiligde acceptatielink.
+- Lint/build geslaagd; desktophoofdstukken en zoom gecontroleerd. Live eigenaaracceptatie en mobiele controle niet afgerond. Production/OIDC is bewust Preview-only; geen domeinomzetting of publicatie uitgevoerd. Concrete vervolgstappen: REMIXED_PRODUCTION_CHECK_2026-10-21.md.
+
 ## 2026-10-06 — D3
 
 - Refreshed the homepage and four shared project pages with Inter typography, larger existing imagery, shorter introductions, alternating project presentations and a dark mission chapter.

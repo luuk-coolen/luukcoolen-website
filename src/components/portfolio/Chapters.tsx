@@ -17,18 +17,21 @@ export function ProjectShowcase() {
   };
   useEffect(() => { const observer = new ResizeObserver(updateEdges); if (rail.current) observer.observe(rail.current); updateEdges(); return () => observer.disconnect(); }, []);
   const move = (direction: number) => rail.current?.scrollBy({ left: direction * ((rail.current.firstElementChild?.getBoundingClientRect().width || 300) + 22), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-  const cards = ['focusflow-personal', 'mindflow', 'focusflow-bewind'];
+  const cards = ['focusflow-remixed', 'mindflow', 'focusflow-personal', 'focusflow-bewind'];
   const copy: Record<string, string> = {
-    'focusflow-personal': 'Gebouwd vanuit mijn behoefte aan overzicht bij sollicitaties, projecten en persoonlijke ontwikkeling. Met een top 3, dagstart en weekreview verbind ik plannen aan terugkijken.',
+    'focusflow-remixed': 'Mijn gepubliceerde webapp voor dagstart, focus en reflectie. Een remix van Personal, dat zelf voortkwam uit mijn eerste Bewind-project.',
+    'focusflow-personal': 'Een remix van Bewind voor mijn eigen planning, sollicitaties en projecten. Deze tussenstap werd de basis voor FocusFlow Remixed.',
     mindflow: 'Ik wilde onderzoeken hoe een coachgesprek bij één concrete situatie blijft. MindFlow verbindt het gesprek aan reflectie en een kleine vervolgstap.',
-    'focusflow-bewind': 'Vanuit bewindvoering onderzocht ik hoe losse signalen een werkbare dagplanning worden. De demo verbindt inbox, voorbereiding en weekplanning.',
+    'focusflow-bewind': 'Een van mijn eerste projecten, begonnen in AI Studio en later overgebracht naar Codex. De demo verkent overzicht en planning vanuit bewindvoering.',
   };
   const approach: Record<string, string> = {
+    'focusflow-remixed': 'Ik verbind overzicht, kiezen, uitvoeren en terugkijken in één dagritme, met een afzonderlijke Werkmodus.',
     'focusflow-personal': 'Ik verbind dagstart en weekreview en beperk de keuze tot drie prioriteiten. Ik stel het ritme bij vanuit mijn eigen gebruik.',
     mindflow: 'Ik begin bij wat er is gebeurd en laat de gebruiker zelf kiezen welke invalshoek past. De toon en grenzen wil ik nog met anderen toetsen.',
     'focusflow-bewind': 'Ik volg de werkdag: signaleren, afwegen, voorbereiden en plannen. Ik houd de demo bewust kleiner dan een dossiersysteem.',
   };
   const boundaries: Record<string, string> = {
+    'focusflow-remixed': 'Ik kies zelf mijn prioriteiten. De gepubliceerde app is beveiligd en bedoeld voor mijn eigen gebruik.',
     'focusflow-personal': 'De planning is een vaste workflow. Ik kies zelf mijn prioriteiten; de app neemt die afweging niet over.',
     mindflow: 'AI ondersteunt het gesprek. Suggesties blijven voorlopige werkhypotheses; de gebruiker beoordeelt wat past.',
     'focusflow-bewind': 'De demo ordent informatie en voorbereiding. De professionele afweging blijft bij de bewindvoerder; de planning is geen AI-advies.',
@@ -43,7 +46,7 @@ export function ProjectShowcase() {
     <div className="rail-heading"><h3>Meer projecten</h3>{(edges.previous || edges.next) && <div className="arrows"><button className="round" disabled={!edges.previous} aria-label="Vorige projecten" onClick={() => move(-1)}>←</button><button className="round" disabled={!edges.next} aria-label="Volgende projecten" onClick={() => move(1)}>→</button></div>}</div>
     <nav className="project-index" aria-label="Kies een projectverhaal">{portfolioStories.map(story => <a key={story.slug} href={story.href}>{story.label}</a>)}</nav>
     <div className="project-rail" ref={rail} onScroll={updateEdges} tabIndex={0} aria-label="Meer projecten; veeg of gebruik de pijltjes" onKeyDown={event => { if (event.target === event.currentTarget && ['ArrowLeft', 'ArrowRight'].includes(event.key)) { event.preventDefault(); move(event.key === 'ArrowLeft' ? -1 : 1); } }}>
-      {cards.map(slug => { const story = portfolioStories.find(item => item.slug === slug)!; return <article className="project-card" key={slug}><div className="card-image"><a className="project-image-link" href={story.href} aria-label={`Lees het projectverhaal van ${story.label}`}><img src={story.media.examples[slug === 'focusflow-personal' ? 1 : 0].src} alt={story.media.examples[slug === 'focusflow-personal' ? 1 : 0].alt} loading="lazy" /></a></div><div className="card-copy"><p className="label">{slug === 'focusflow-personal' ? 'Eigen hulpmiddel in ontwikkeling' : 'Leerprototype'}</p><h3>{story.label}</h3><p>{copy[slug]}</p><div className="project-mini-process"><h4>Hoe ik te werk ging</h4><p>{approach[slug]}</p><p className="project-boundary">{boundaries[slug]}</p></div><div className="project-actions"><a className="primary" href={story.href}>Lees het projectverhaal</a><a className="text-link" href={story.appHref} target="_blank" rel="noopener noreferrer">Open de app</a></div></div></article>; })}
+      {cards.map(slug => { const story = portfolioStories.find(item => item.slug === slug)!; return <article className="project-card" key={slug}><div className="card-image"><a className="project-image-link" href={story.href} aria-label={`Lees het projectverhaal van ${story.label}`}><img src={story.media.examples[slug === 'focusflow-personal' ? 1 : 0].src} alt={story.media.examples[slug === 'focusflow-personal' ? 1 : 0].alt} loading="lazy" /></a></div><div className="card-copy"><p className="label">{story.projectKind || (slug === 'focusflow-personal' ? 'Eigen hulpmiddel in ontwikkeling' : 'Leerprototype')}</p><h3>{story.label}</h3><p>{copy[slug]}</p><div className="project-mini-process"><h4>Hoe ik te werk ging</h4><p>{approach[slug]}</p><p className="project-boundary">{boundaries[slug]}</p></div><div className="project-actions"><a className="primary" href={story.href}>Lees het projectverhaal</a><a className="text-link" href={story.appHref} target="_blank" rel="noopener noreferrer">Open de app</a></div></div></article>; })}
     </div></div></section>;
 }
 

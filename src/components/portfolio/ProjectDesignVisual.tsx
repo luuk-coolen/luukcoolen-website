@@ -5,6 +5,7 @@ const personalLabels = [
 ];
 
 const projectLabels: Record<string, string[][]> = {
+  'focusflow-remixed': [['Overzicht', 'Richting', 'Eerste stap'], ['Dagstart', 'Werkmodus', 'Terugblik'], ['Eigen gegevens', 'Inzichten', 'Zelf duiden']],
   'focusflow-personal': personalLabels,
   woonbuddy: [['Woonstart', 'Taken', 'Ontwikkeling'], ['Taak', 'Vaste stappen', 'Eigen tempo'], ['Vraag', 'Contact', 'Begeleiding']],
   mindflow: [['Situatie', 'Gesprek', 'Reflectie'], ['Observatie', 'Hypothese?', 'Zelf toetsen'], ['Herkenbaar?', 'Zelf kiezen', 'Vervolgstap']],
